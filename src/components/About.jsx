@@ -185,10 +185,14 @@ const About = () => {
                 <a
                   href={encodedResumeUrl}
                   download="Muhammad_Sarmad_Javed_Resume.pdf"
-                  className="w-full px-4 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-white font-medium text-sm sm:text-base rounded-lg sm:rounded-xl hover:shadow-lg hover:shadow-[var(--accent-primary)]/25 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center"
+                  className="group w-full px-4 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-white font-medium text-sm sm:text-base rounded-lg sm:rounded-xl hover:shadow-lg hover:shadow-[var(--accent-primary)]/25 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center relative overflow-hidden"
                 >
+                  {/* Hover effect overlay */}
+                  <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
+
+                  {/* Icon with animation */}
                   <svg
-                    className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1.5 sm:mr-2"
+                    className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1.5 sm:mr-2 transition-transform duration-300 group-hover:translate-y-0.5"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -200,7 +204,14 @@ const About = () => {
                       d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                     />
                   </svg>
-                  Download Resume
+
+                  {/* Text with animation */}
+                  <span className="relative">Download Resume</span>
+
+                  {/* Optional: Download count badge - you can add dynamic count if needed */}
+                  <span className="ml-2 px-1.5 py-0.5 text-[10px] bg-white/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    PDF
+                  </span>
                 </a>
               </div>
             </div>

@@ -92,16 +92,20 @@ const Footer = () => {
         {/* Main Footer Content */}
         <div className="py-10 sm:py-12 md:py-16">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12">
-            {/* Brand Column - Full width on mobile, then half, then 4 cols */}
+            {/* Brand Column - Updated with responsive logo */}
             <div className="sm:col-span-2 lg:col-span-4">
+              {/* Logo - Updated to match navbar */}
               <a
                 href="#home"
                 onClick={(e) => scrollToSection("home", e)}
-                className="text-xl sm:text-2xl font-bold tracking-tight text-[var(--text-primary)] inline-block mb-3 sm:mb-4 hover:text-[var(--accent-primary)] transition-colors duration-300"
+                className="inline-block mb-3 sm:mb-4 hover:opacity-80 transition-opacity duration-300"
                 aria-label="Go to home"
               >
-                {personal.initials}
-                <span className="text-[var(--accent-primary)]">.</span>
+                <img
+                  src="./Logo.png"
+                  alt="Logo"
+                  className="h-8 sm:h-10 md:h-12 lg:h-14 w-auto object-contain"
+                />
               </a>
               <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed mb-4 sm:mb-6 max-w-sm">
                 {footer.brandDescription}
@@ -231,6 +235,32 @@ const Footer = () => {
                 />
               </svg>
               <span>Back to top</span>
+            </button>
+          </div>
+
+          {/* Desktop back to top button - hidden on mobile */}
+          <div className="hidden sm:block absolute bottom-8 right-8">
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              className="w-10 h-10 rounded-full bg-[var(--bg-tertiary)]/70 flex items-center justify-center text-[var(--text-secondary)] hover:bg-[var(--accent-primary)] hover:text-white transition-all duration-300 border border-[var(--neutral-200)]/10"
+              aria-label="Back to top"
+            >
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M5 10l7-7m0 0l7 7m-7-7v18"
+                />
+              </svg>
             </button>
           </div>
         </div>

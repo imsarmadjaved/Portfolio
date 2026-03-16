@@ -81,7 +81,7 @@ const Navbar = () => {
     <nav
       className={`fixed w-full z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[var(--bg-secondary)]/95 backdrop-blur-md shadow-lg py-2 sm:py-3"
+          ? "bg-[var(--bg-secondary)]/85 backdrop-blur-md shadow-lg py-2 sm:py-3"
           : "bg-transparent py-3 sm:py-5"
       }`}
     >
@@ -96,7 +96,11 @@ const Navbar = () => {
           className="text-xl sm:text-2xl font-bold tracking-tight text-[var(--text-primary)] hover:text-[var(--accent-primary)] transition-colors duration-300"
           aria-label="Home"
         >
-          MSJ<span className="text-[var(--accent-primary)]">.</span>
+          <img
+            src="./Logo.png"
+            alt="Logo"
+            className="h-8 sm:h-10 md:h-12 lg:h-14 w-auto object-contain"
+          />
         </a>
 
         {/* Desktop Menu */}
