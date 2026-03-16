@@ -24,7 +24,7 @@ const Hero = () => {
     >
       {/* Subtle particles - just 3 for decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(3)].map((_, i) => (
+        {[...Array(30)].map((_, i) => (
           <div
             key={i}
             className="absolute w-0.5 h-0.5 bg-white/40 rounded-full"
