@@ -93,11 +93,31 @@ export const portfolioData = {
             title: "AI Recipe Generator",
             description: "Ai based project showcasing integration of AI APIs with modern web applications. Generate recipes by using given ingredients.",
             image: "/images/Ai-recipie.png",
-            technologies: ["React.js"],
+            technologies: ["React.js", "Tailwindcss"],
             liveUrl: "https://ai-recipe-generator-nine.vercel.app/",
             githubUrl: "https://github.com/imsarmadjaved/Ai-Recipe-Generator",
             featured: false
-        }
+        },
+        {
+            id: 3,
+            title: "First Ecommerce Page",
+            description: "The very first Project using react and tailwind build by me.",
+            image: "/images",
+            technologies: ["React.js", "Tailwindcss"],
+            liveUrl: "https://first-ecommerce-react-qy7u.vercel.app/",
+            githubUrl: "https://github.com/imsarmadjaved/First--Ecommerce-React-",
+            featured: false
+        },
+        {
+            id: 4,
+            title: "React Portfolio",
+            description: "Porfolio built in react and tailwindcss with Dark and light Mode.",
+            image: "/images",
+            technologies: ["React.js", "Tailwindcss"],
+            liveUrl: "https://portfolio-react-ecru-two.vercel.app/",
+            githubUrl: "https://github.com/imsarmadjaved/portfolio_react",
+            featured: false
+        },
     ],
 
     experience: [
