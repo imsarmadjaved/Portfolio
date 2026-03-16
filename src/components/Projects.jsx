@@ -5,6 +5,7 @@ import { portfolioData } from "../data/PortfolioData";
 const Projects = () => {
   const { projects } = portfolioData;
   const [filter, setFilter] = useState("all");
+  const [imageErrors, setImageErrors] = useState({});
 
   const filteredProjects =
     filter === "all"
@@ -23,6 +24,11 @@ const Projects = () => {
 
   // Get unique technologies for filter (limit to 5 for cleaner UI)
   const filterTechnologies = technologies.slice(0, 7);
+
+  // Handle image error
+  const handleImageError = (projectId) => {
+    setImageErrors((prev) => ({ ...prev, [projectId]: true }));
+  };
 
   return (
     <section
@@ -86,15 +92,28 @@ const Projects = () => {
               key={project.id}
               className="group backdrop-blur-md bg-[var(--bg-primary)]/70 rounded-xl sm:rounded-2xl overflow-hidden shadow-lg border border-[var(--neutral-200)]/10 hover:border-[var(--accent-primary)]/30 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 h-full flex flex-col"
               data-aos="fade-up"
+              data-aos-delay={index * 100}
             >
               {/* Hover gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
 
-              {/* Project Image Placeholder - responsive */}
-              <div className="relative h-36 sm:h-40 lg:h-48 overflow-hidden bg-gradient-to-br from-[var(--accent-primary)]/20 to-[var(--accent-secondary)]/20 flex items-center justify-center">
-                <span className="text-4xl sm:text-5xl font-light text-[var(--accent-primary)]/30 group-hover:text-[var(--accent-primary)]/50 transition-all duration-500">
-                  {project.title.charAt(0)}
-                </span>
+              {/* Project Image */}
+              <div className="relative h-36 sm:h-40 lg:h-48 overflow-hidden bg-gradient-to-br from-[var(--accent-primary)]/20 to-[var(--accent-secondary)]/20">
+                {!imageErrors[project.id] && project.image ? (
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    onError={() => handleImageError(project.id)}
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center">
+                    <span className="text-4xl sm:text-5xl font-light text-[var(--accent-primary)]/30 group-hover:text-[var(--accent-primary)]/50 transition-all duration-500">
+                      {project.title.charAt(0)}
+                    </span>
+                  </div>
+                )}
 
                 {/* Featured Badge */}
                 {project.featured && (
