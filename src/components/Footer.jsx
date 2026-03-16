@@ -1,3 +1,4 @@
+// src/components/Footer.jsx
 import React from "react";
 import { portfolioData } from "../data/PortfolioData";
 
@@ -30,7 +31,7 @@ const Footer = () => {
     const icons = {
       github: (
         <svg
-          className="w-5 h-5"
+          className="w-4 h-4 sm:w-5 sm:h-5"
           fill="currentColor"
           viewBox="0 0 24 24"
           aria-hidden="true"
@@ -44,7 +45,7 @@ const Footer = () => {
       ),
       linkedin: (
         <svg
-          className="w-5 h-5"
+          className="w-4 h-4 sm:w-5 sm:h-5"
           fill="currentColor"
           viewBox="0 0 24 24"
           aria-hidden="true"
@@ -58,7 +59,7 @@ const Footer = () => {
       ),
       twitter: (
         <svg
-          className="w-5 h-5"
+          className="w-4 h-4 sm:w-5 sm:h-5"
           fill="currentColor"
           viewBox="0 0 24 24"
           aria-hidden="true"
@@ -68,7 +69,7 @@ const Footer = () => {
       ),
       email: (
         <svg
-          className="w-5 h-5"
+          className="w-4 h-4 sm:w-5 sm:h-5"
           fill="currentColor"
           viewBox="0 0 24 24"
           aria-hidden="true"
@@ -82,113 +83,156 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-[var(--bg-secondary)] border-t border-[var(--neutral-200)]">
-      <div className="container-custom py-12 md:py-16">
+    <footer className="bg-[var(--bg-secondary)] border-t border-[var(--neutral-200)] relative overflow-hidden">
+      {/* Background decoration - subtle */}
+      <div className="absolute top-0 right-0 w-32 h-32 sm:w-48 sm:h-48 lg:w-64 lg:h-64 bg-[var(--accent-primary)]/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-32 h-32 sm:w-48 sm:h-48 lg:w-64 lg:h-64 bg-[var(--accent-secondary)]/5 rounded-full blur-3xl"></div>
+
+      <div className="container-custom relative z-10 px-4 sm:px-6 lg:px-8 mx-auto">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12">
-          {/* Brand Column */}
-          <div className="md:col-span-4">
-            <a
-              href="#home"
-              onClick={(e) => scrollToSection("home", e)}
-              className="text-2xl font-bold tracking-tight text-[var(--text-primary)] inline-block mb-4"
-            >
-              {personal.initials}
-              <span className="text-[var(--accent-primary)]">.</span>
-            </a>
-            <p className="text-[var(--text-secondary)] text-sm leading-relaxed mb-4 max-w-sm">
-              {footer.brandDescription}
-            </p>
-            <div className="flex space-x-3">
-              {footer.links.connect.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  target={link.type === "external" ? "_blank" : undefined}
-                  rel={
-                    link.type === "external" ? "noopener noreferrer" : undefined
-                  }
-                  onClick={(e) => handleLinkClick(link, e)}
-                  className="social-icon"
-                  aria-label={link.name}
-                >
-                  {getIcon(link.icon)}
-                </a>
-              ))}
+        <div className="py-10 sm:py-12 md:py-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12">
+            {/* Brand Column - Full width on mobile, then half, then 4 cols */}
+            <div className="sm:col-span-2 lg:col-span-4">
+              <a
+                href="#home"
+                onClick={(e) => scrollToSection("home", e)}
+                className="text-xl sm:text-2xl font-bold tracking-tight text-[var(--text-primary)] inline-block mb-3 sm:mb-4 hover:text-[var(--accent-primary)] transition-colors duration-300"
+                aria-label="Go to home"
+              >
+                {personal.initials}
+                <span className="text-[var(--accent-primary)]">.</span>
+              </a>
+              <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed mb-4 sm:mb-6 max-w-sm">
+                {footer.brandDescription}
+              </p>
+              <div className="flex flex-wrap gap-2 sm:gap-3">
+                {footer.links.connect.slice(0, 4).map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    target={link.type === "external" ? "_blank" : undefined}
+                    rel={
+                      link.type === "external"
+                        ? "noopener noreferrer"
+                        : undefined
+                    }
+                    onClick={(e) => handleLinkClick(link, e)}
+                    className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[var(--bg-tertiary)]/70 flex items-center justify-center text-[var(--text-secondary)] hover:bg-gradient-to-r hover:from-[var(--accent-primary)] hover:to-[var(--accent-secondary)] hover:text-white transition-all duration-300 border border-[var(--neutral-200)]/10"
+                    aria-label={link.name}
+                  >
+                    {getIcon(link.icon)}
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* Quick Links - Spaced appropriately */}
+            <div className="sm:col-span-1 lg:col-span-2 lg:col-start-7">
+              <h3 className="text-xs sm:text-sm font-semibold text-[var(--text-primary)] uppercase tracking-wider mb-3 sm:mb-4">
+                Quick Links
+              </h3>
+              <ul className="space-y-2 sm:space-y-3">
+                {footer.links.product.map((link) => (
+                  <li key={link.name}>
+                    <a
+                      href={`#${link.href}`}
+                      onClick={(e) => handleLinkClick(link, e)}
+                      className="text-xs sm:text-sm text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors duration-300 inline-block py-1"
+                    >
+                      {link.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Connect */}
+            <div className="sm:col-span-1 lg:col-span-2">
+              <h3 className="text-xs sm:text-sm font-semibold text-[var(--text-primary)] uppercase tracking-wider mb-3 sm:mb-4">
+                Connect
+              </h3>
+              <ul className="space-y-2 sm:space-y-3">
+                {footer.links.connect.map((link) => (
+                  <li key={link.name}>
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs sm:text-sm text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors duration-300 inline-flex items-center gap-2 py-1"
+                    >
+                      <span className="w-4 h-4 flex-shrink-0">
+                        {getIcon(link.icon)}
+                      </span>
+                      <span className="truncate">{link.name}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Legal */}
+            <div className="sm:col-span-2 lg:col-span-2">
+              <h3 className="text-xs sm:text-sm font-semibold text-[var(--text-primary)] uppercase tracking-wider mb-3 sm:mb-4">
+                Legal
+              </h3>
+              <ul className="space-y-2 sm:space-y-3">
+                {footer.links.legal.map((link) => (
+                  <li key={link.name}>
+                    <a
+                      href={link.href}
+                      onClick={(e) => handleLinkClick(link, e)}
+                      className="text-xs sm:text-sm text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors duration-300 inline-block py-1"
+                    >
+                      {link.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div className="md:col-span-2 md:col-start-7">
-            <h3 className="text-sm font-semibold text-[var(--text-primary)] uppercase tracking-wider mb-4">
-              Quick Links
-            </h3>
-            <ul className="space-y-3">
-              {footer.links.product.map((link) => (
-                <li key={link.name}>
-                  <a
-                    href={`#${link.href}`}
-                    onClick={(e) => handleLinkClick(link, e)}
-                    className="text-sm text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
+          {/* Bottom Bar */}
+          <div className="mt-8 sm:mt-10 md:mt-12 pt-6 sm:pt-8 border-t border-[var(--neutral-200)] flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4">
+            <p className="text-xs sm:text-sm text-[var(--text-tertiary)] text-center sm:text-left">
+              © {currentYear} {personal.name}. All rights reserved.
+            </p>
+            <div className="flex items-center gap-2">
+              <span className="text-xs sm:text-sm text-[var(--text-tertiary)]">
+                •
+              </span>
+              <p className="text-xs sm:text-sm text-[var(--text-tertiary)]">
+                Designed & built with precision
+              </p>
+            </div>
           </div>
 
-          {/* Connect */}
-          <div className="md:col-span-2">
-            <h3 className="text-sm font-semibold text-[var(--text-primary)] uppercase tracking-wider mb-4">
-              Connect
-            </h3>
-            <ul className="space-y-3">
-              {footer.links.connect.map((link) => (
-                <li key={link.name}>
-                  <a
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors inline-flex items-center gap-2"
-                  >
-                    <span className="w-4 h-4">{getIcon(link.icon)}</span>
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
+          {/* Back to top button - mobile friendly */}
+          <div className="mt-6 text-center sm:hidden">
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              className="inline-flex items-center gap-2 px-4 py-2 text-xs text-[var(--accent-primary)] bg-[var(--bg-tertiary)]/50 rounded-full hover:bg-[var(--accent-primary)] hover:text-white transition-all duration-300"
+              aria-label="Back to top"
+            >
+              <svg
+                className="w-3 h-3"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M5 10l7-7m0 0l7 7m-7-7v18"
+                />
+              </svg>
+              <span>Back to top</span>
+            </button>
           </div>
-
-          {/* Legal */}
-          <div className="md:col-span-2">
-            <h3 className="text-sm font-semibold text-[var(--text-primary)] uppercase tracking-wider mb-4">
-              Legal
-            </h3>
-            <ul className="space-y-3">
-              {footer.links.legal.map((link) => (
-                <li key={link.name}>
-                  <a
-                    href={link.href}
-                    onClick={(e) => handleLinkClick(link, e)}
-                    className="text-sm text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-[var(--neutral-200)] flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-[var(--text-tertiary)]">
-            © {currentYear} {personal.name}. All rights reserved.
-          </p>
-          <p className="text-sm text-[var(--text-tertiary)]">
-            Designed & built with precision
-          </p>
         </div>
       </div>
     </footer>

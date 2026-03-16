@@ -27,43 +27,45 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="py-20 bg-[var(--bg-secondary)] relative overflow-hidden"
+      className="py-12 sm:py-16 lg:py-20 bg-[var(--bg-secondary)] relative overflow-hidden px-4 sm:px-6 lg:px-8"
     >
-      {/* Background decoration */}
-      <div className="absolute top-20 left-20 w-72 h-72 bg-[var(--accent-primary)]/10 rounded-full blur-3xl animate-pulse-slow"></div>
+      {/* Background decoration - responsive sizing */}
+      <div className="absolute top-10 sm:top-20 left-10 sm:left-20 w-40 sm:w-56 lg:w-72 h-40 sm:h-56 lg:h-72 bg-[var(--accent-primary)]/10 rounded-full blur-2xl lg:blur-3xl animate-pulse-slow"></div>
       <div
-        className="absolute bottom-20 right-20 w-72 h-72 bg-[var(--accent-secondary)]/10 rounded-full blur-3xl animate-pulse-slow"
+        className="absolute bottom-10 sm:bottom-20 right-10 sm:right-20 w-40 sm:w-56 lg:w-72 h-40 sm:h-56 lg:h-72 bg-[var(--accent-secondary)]/10 rounded-full blur-2xl lg:blur-3xl animate-pulse-slow"
         style={{ animationDelay: "2s" }}
       ></div>
-      <div className="absolute top-1/2 left-1/3 w-96 h-96 bg-[var(--accent-primary)]/5 rounded-full blur-3xl"></div>
+      <div className="absolute top-1/2 left-1/3 w-48 sm:w-72 lg:w-96 h-48 sm:h-72 lg:h-96 bg-[var(--accent-primary)]/5 rounded-full blur-2xl lg:blur-3xl"></div>
 
-      <div className="container-custom relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-16" data-aos="fade-down">
-          <span className="text-[var(--accent-primary)] text-sm font-medium uppercase tracking-wider mb-3 block">
+      <div className="container-custom relative z-10 mx-auto">
+        {/* Section Header - responsive spacing and text */}
+        <div
+          className="text-center mb-10 sm:mb-14 lg:mb-16 px-4"
+          data-aos="fade-down"
+        >
+          <span className="text-[var(--accent-primary)] text-xs sm:text-sm font-medium uppercase tracking-wider mb-2 sm:mb-3 block">
             My Work
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-4 relative inline-block">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-3 sm:mb-4 relative inline-block">
             Featured Projects
-            <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] rounded-full"></div>
+            <div className="absolute -bottom-2 sm:-bottom-3 left-1/2 transform -translate-x-1/2 w-16 sm:w-20 h-0.5 sm:h-1 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] rounded-full"></div>
           </h2>
-          <p className="text-[var(--text-secondary)] mt-6 max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base text-[var(--text-secondary)] mt-4 sm:mt-6 max-w-2xl mx-auto px-4">
             A collection of projects I've built, each with its own story and
             purpose
           </p>
         </div>
 
-        {/* Filter Tabs */}
+        {/* Filter Tabs - responsive */}
         <div
-          className="flex flex-wrap justify-center gap-2 mb-12"
+          className="flex flex-wrap justify-center gap-1.5 sm:gap-2 mb-8 sm:mb-10 lg:mb-12 px-2"
           data-aos="fade-up"
-          data-aos-delay="100"
         >
           {filterTechnologies.map((tech) => (
             <button
               key={tech}
               onClick={() => setFilter(tech)}
-              className={`px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 ${
+              className={`px-2.5 sm:px-3 lg:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-medium rounded-full transition-all duration-300 whitespace-nowrap ${
                 filter === tech
                   ? "bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-white shadow-lg shadow-[var(--accent-primary)]/30"
                   : "backdrop-blur-md bg-[var(--bg-tertiary)]/70 text-[var(--text-secondary)] hover:bg-[var(--accent-primary)]/20 hover:text-[var(--accent-primary)] border border-[var(--neutral-200)]/10"
@@ -74,74 +76,73 @@ const Projects = () => {
           ))}
         </div>
 
-        {/* Projects Grid */}
+        {/* Projects Grid - responsive */}
         <div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6 px-2 sm:px-0"
           data-aos="fade-up"
-          data-aos-delay="200"
         >
           {filteredProjects.map((project, index) => (
             <div
               key={project.id}
-              className="group backdrop-blur-md bg-[var(--bg-primary)]/70 rounded-2xl overflow-hidden shadow-lg border border-[var(--neutral-200)]/10 hover:border-[var(--accent-primary)]/30 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 h-full flex flex-col"
+              className="group backdrop-blur-md bg-[var(--bg-primary)]/70 rounded-xl sm:rounded-2xl overflow-hidden shadow-lg border border-[var(--neutral-200)]/10 hover:border-[var(--accent-primary)]/30 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 h-full flex flex-col"
               data-aos="fade-up"
-              data-aos-delay={300 + index * 100}
             >
               {/* Hover gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
 
-              {/* Project Image Placeholder */}
-              <div className="relative h-48 overflow-hidden bg-gradient-to-br from-[var(--accent-primary)]/20 to-[var(--accent-secondary)]/20 flex items-center justify-center">
-                <span className="text-5xl font-light text-[var(--accent-primary)]/30 group-hover:text-[var(--accent-primary)]/50 transition-all duration-500">
+              {/* Project Image Placeholder - responsive */}
+              <div className="relative h-36 sm:h-40 lg:h-48 overflow-hidden bg-gradient-to-br from-[var(--accent-primary)]/20 to-[var(--accent-secondary)]/20 flex items-center justify-center">
+                <span className="text-4xl sm:text-5xl font-light text-[var(--accent-primary)]/30 group-hover:text-[var(--accent-primary)]/50 transition-all duration-500">
                   {project.title.charAt(0)}
                 </span>
 
                 {/* Featured Badge */}
                 {project.featured && (
-                  <div className="absolute top-4 right-4 z-20">
-                    <span className="px-3 py-1 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-white text-xs font-medium rounded-full shadow-lg backdrop-blur-sm">
+                  <div className="absolute top-2 sm:top-3 lg:top-4 right-2 sm:right-3 lg:right-4 z-20">
+                    <span className="px-2 sm:px-3 py-0.5 sm:py-1 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-white text-[10px] sm:text-xs font-medium rounded-full shadow-lg backdrop-blur-sm">
                       Featured
                     </span>
                   </div>
                 )}
               </div>
 
-              {/* Content */}
-              <div className="p-6 relative z-10 flex-grow flex flex-col">
-                <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-2 group-hover:text-[var(--accent-primary)] transition-colors duration-300">
+              {/* Content - responsive padding */}
+              <div className="p-4 sm:p-5 lg:p-6 relative z-10 flex-grow flex flex-col">
+                <h3 className="text-lg sm:text-xl font-semibold text-[var(--text-primary)] mb-1.5 sm:mb-2 group-hover:text-[var(--accent-primary)] transition-colors duration-300 line-clamp-1">
                   {project.title}
                 </h3>
-                <p className="text-[var(--text-secondary)] text-sm mb-4 line-clamp-2 flex-grow">
+                <p className="text-[var(--text-secondary)] text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-2 sm:line-clamp-3 flex-grow">
                   {project.description}
                 </p>
 
-                {/* Technologies */}
-                <div className="flex flex-wrap gap-2 mb-4">
+                {/* Technologies - responsive */}
+                <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3 sm:mb-4">
                   {project.technologies.slice(0, 3).map((tech, i) => (
                     <span
                       key={i}
-                      className="px-2 py-1 backdrop-blur-sm bg-[var(--bg-tertiary)]/50 text-[var(--text-secondary)] text-xs rounded-md border border-[var(--neutral-200)]/10"
+                      className="px-1.5 sm:px-2 py-0.5 sm:py-1 backdrop-blur-sm bg-[var(--bg-tertiary)]/50 text-[var(--text-secondary)] text-[10px] sm:text-xs rounded-md border border-[var(--neutral-200)]/10"
                     >
                       {tech}
                     </span>
                   ))}
                   {project.technologies.length > 3 && (
-                    <span className="px-2 py-1 backdrop-blur-sm bg-[var(--bg-tertiary)]/50 text-[var(--text-secondary)] text-xs rounded-md border border-[var(--neutral-200)]/10">
+                    <span className="px-1.5 sm:px-2 py-0.5 sm:py-1 backdrop-blur-sm bg-[var(--bg-tertiary)]/50 text-[var(--text-secondary)] text-[10px] sm:text-xs rounded-md border border-[var(--neutral-200)]/10">
                       +{project.technologies.length - 3}
                     </span>
                   )}
                 </div>
 
-                {/* Links */}
-                <div className="flex items-center gap-3 pt-3 border-t border-[var(--neutral-200)]/20">
+                {/* Links - responsive */}
+                <div className="flex items-center gap-2 sm:gap-3 pt-2 sm:pt-3 border-t border-[var(--neutral-200)]/20">
                   <a
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors duration-300"
+                    className="text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors duration-300 p-1"
+                    aria-label="GitHub Repository"
                   >
                     <svg
-                      className="w-5 h-5"
+                      className="w-4 h-4 sm:w-5 sm:h-5"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                     >
@@ -156,10 +157,11 @@ const Projects = () => {
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors duration-300"
+                    className="text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors duration-300 p-1"
+                    aria-label="Live Demo"
                   >
                     <svg
-                      className="w-5 h-5"
+                      className="w-4 h-4 sm:w-5 sm:h-5"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -172,7 +174,7 @@ const Projects = () => {
                       />
                     </svg>
                   </a>
-                  <span className="flex-1 text-right text-xs text-[var(--text-tertiary)]">
+                  <span className="flex-1 text-right text-[10px] sm:text-xs text-[var(--text-tertiary)] truncate ml-1">
                     {project.technologies[0]}
                   </span>
                 </div>
@@ -181,34 +183,50 @@ const Projects = () => {
           ))}
         </div>
 
-        {/* View More Button */}
-        <div
-          className="text-center mt-12"
-          data-aos="fade-up"
-          data-aos-delay="600"
-        >
-          <a
-            href="https://github.com/imsarmadjaved"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-3 backdrop-blur-md bg-[var(--bg-tertiary)]/70 text-[var(--text-primary)] rounded-full font-medium hover:bg-gradient-to-r hover:from-[var(--accent-primary)] hover:to-[var(--accent-secondary)] hover:text-white transition-all duration-300 group border border-[var(--neutral-200)]/10"
-          >
-            <span>View All on GitHub</span>
-            <svg
-              className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+        {/* Empty State - when no projects match filter */}
+        {filteredProjects.length === 0 && (
+          <div className="text-center py-8 sm:py-12 lg:py-16">
+            <p className="text-sm sm:text-base text-[var(--text-secondary)]">
+              No projects found matching this filter.
+            </p>
+            <button
+              onClick={() => setFilter("all")}
+              className="mt-4 px-4 sm:px-6 py-2 sm:py-2.5 text-sm sm:text-base bg-[var(--accent-primary)] text-white rounded-lg hover:bg-[var(--accent-secondary)] transition-colors duration-300"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
-            </svg>
-          </a>
-        </div>
+              View All Projects
+            </button>
+          </div>
+        )}
+
+        {/* View More Button - responsive */}
+        {filteredProjects.length > 0 && (
+          <div
+            className="text-center mt-8 sm:mt-10 lg:mt-12"
+            data-aos="fade-up"
+          >
+            <a
+              href="https://github.com/imsarmadjaved"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 sm:gap-2 px-4 sm:px-6 lg:px-8 py-2 sm:py-2.5 lg:py-3 backdrop-blur-md bg-[var(--bg-tertiary)]/70 text-[var(--text-primary)] text-sm sm:text-base rounded-full font-medium hover:bg-gradient-to-r hover:from-[var(--accent-primary)] hover:to-[var(--accent-secondary)] hover:text-white transition-all duration-300 group border border-[var(--neutral-200)]/10"
+            >
+              <span>View All on GitHub</span>
+              <svg
+                className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform duration-300"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </a>
+          </div>
+        )}
       </div>
     </section>
   );

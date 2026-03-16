@@ -38,7 +38,7 @@ const Contact = () => {
     {
       icon: (
         <svg
-          className="w-5 h-5"
+          className="w-4 h-4 sm:w-5 sm:h-5"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -58,7 +58,7 @@ const Contact = () => {
     {
       icon: (
         <svg
-          className="w-5 h-5"
+          className="w-4 h-4 sm:w-5 sm:h-5"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -78,7 +78,7 @@ const Contact = () => {
     {
       icon: (
         <svg
-          className="w-5 h-5"
+          className="w-4 h-4 sm:w-5 sm:h-5"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -106,65 +106,66 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="py-20 bg-[var(--bg-secondary)] relative overflow-hidden"
+      className="py-12 sm:py-16 lg:py-20 bg-[var(--bg-secondary)] relative overflow-hidden"
     >
-      {/* Background decoration */}
-      <div className="absolute top-20 left-20 w-96 h-96 bg-[var(--accent-primary)]/10 rounded-full blur-3xl animate-pulse-slow"></div>
+      {/* Background decoration - responsive sizing */}
+      <div className="absolute top-10 sm:top-20 left-10 sm:left-20 w-48 sm:w-72 lg:w-96 h-48 sm:h-72 lg:h-96 bg-[var(--accent-primary)]/10 rounded-full blur-2xl lg:blur-3xl animate-pulse-slow"></div>
       <div
-        className="absolute bottom-20 right-20 w-96 h-96 bg-[var(--accent-secondary)]/10 rounded-full blur-3xl animate-pulse-slow"
+        className="absolute bottom-10 sm:bottom-20 right-10 sm:right-20 w-48 sm:w-72 lg:w-96 h-48 sm:h-72 lg:h-96 bg-[var(--accent-secondary)]/10 rounded-full blur-2xl lg:blur-3xl animate-pulse-slow"
         style={{ animationDelay: "2s" }}
       ></div>
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[var(--accent-primary)]/5 rounded-full blur-3xl"></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 sm:w-96 lg:w-[500px] h-64 sm:h-96 lg:h-[500px] bg-[var(--accent-primary)]/5 rounded-full blur-2xl lg:blur-3xl"></div>
 
-      <div className="container-custom relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-16" data-aos="fade-down">
-          <span className="text-[var(--accent-primary)] text-sm font-medium uppercase tracking-wider mb-3 block">
+      <div className="container-custom relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header - responsive spacing and text */}
+        <div
+          className="text-center mb-10 sm:mb-14 lg:mb-16"
+          data-aos="fade-down"
+        >
+          <span className="text-[var(--accent-primary)] text-xs sm:text-sm font-medium uppercase tracking-wider mb-2 sm:mb-3 block">
             Get In Touch
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-4 relative inline-block">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-3 sm:mb-4 relative inline-block">
             Contact Me
-            <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] rounded-full"></div>
+            <div className="absolute -bottom-2 sm:-bottom-3 left-1/2 transform -translate-x-1/2 w-16 sm:w-20 h-0.5 sm:h-1 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] rounded-full"></div>
           </h2>
-          <p className="text-[var(--text-secondary)] mt-6 max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base text-[var(--text-secondary)] mt-4 sm:mt-6 max-w-2xl mx-auto">
             Have a question or want to work together? I'd love to hear from you.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-8 max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-5 gap-6 sm:gap-8 max-w-6xl mx-auto">
           {/* Left Column - Contact Info */}
           <div
-            className="lg:col-span-2 space-y-6"
+            className="lg:col-span-2 space-y-4 sm:space-y-6"
             data-aos="fade-right"
-            data-aos-delay="200"
           >
             {contactInfo.map((info, index) => (
               <div
                 key={index}
-                className="group backdrop-blur-md bg-[var(--bg-primary)]/70 rounded-2xl p-6 shadow-lg border border-[var(--neutral-200)]/10 hover:border-[var(--accent-primary)]/30 transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
+                className="group backdrop-blur-md bg-[var(--bg-primary)]/70 rounded-xl sm:rounded-2xl p-4 sm:p-5 lg:p-6 shadow-lg border border-[var(--neutral-200)]/10 hover:border-[var(--accent-primary)]/30 transition-all duration-500 hover:shadow-xl hover:-translate-y-1 w-full"
                 data-aos="fade-up"
-                data-aos-delay={250 + index * 50}
               >
                 {/* Hover gradient overlay */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 rounded-xl sm:rounded-2xl bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
 
-                <div className="relative z-10 flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[var(--accent-primary)]/20 to-[var(--accent-secondary)]/20 backdrop-blur-sm flex items-center justify-center text-[var(--accent-primary)] group-hover:scale-110 group-hover:from-[var(--accent-primary)]/30 group-hover:to-[var(--accent-secondary)]/30 transition-all duration-300">
+                <div className="relative z-10 flex items-start gap-3 sm:gap-4">
+                  <div className="w-8 h-8 sm:w-10 lg:w-12 sm:h-10 lg:h-12 rounded-full bg-gradient-to-br from-[var(--accent-primary)]/20 to-[var(--accent-secondary)]/20 backdrop-blur-sm flex items-center justify-center text-[var(--accent-primary)] group-hover:scale-110 group-hover:from-[var(--accent-primary)]/30 group-hover:to-[var(--accent-secondary)]/30 transition-all duration-300 flex-shrink-0">
                     {info.icon}
                   </div>
-                  <div>
-                    <p className="text-sm text-[var(--text-tertiary)] mb-1">
+                  <div className="min-w-0 flex-1">
+                    <p className="text-xs sm:text-sm text-[var(--text-tertiary)] mb-0.5 sm:mb-1">
                       {info.label}
                     </p>
                     {info.href ? (
                       <a
                         href={info.href}
-                        className="text-[var(--text-primary)] font-medium hover:text-[var(--accent-primary)] transition-colors duration-300"
+                        className="text-sm sm:text-base text-[var(--text-primary)] font-medium hover:text-[var(--accent-primary)] transition-colors duration-300 break-words block"
                       >
                         {info.value}
                       </a>
                     ) : (
-                      <p className="text-[var(--text-primary)] font-medium">
+                      <p className="text-sm sm:text-base text-[var(--text-primary)] font-medium break-words">
                         {info.value}
                       </p>
                     )}
@@ -175,22 +176,22 @@ const Contact = () => {
 
             {/* Social Links */}
             <div
-              className="backdrop-blur-md bg-[var(--bg-primary)]/70 rounded-2xl p-6 shadow-lg border border-[var(--neutral-200)]/10 hover:border-[var(--accent-primary)]/30 transition-all duration-500"
+              className="backdrop-blur-md bg-[var(--bg-primary)]/70 rounded-xl sm:rounded-2xl p-4 sm:p-5 lg:p-6 shadow-lg border border-[var(--neutral-200)]/10 hover:border-[var(--accent-primary)]/30 transition-all duration-500 w-full"
               data-aos="fade-up"
-              data-aos-delay="400"
             >
-              <p className="text-sm text-[var(--text-tertiary)] mb-4">
+              <p className="text-xs sm:text-sm text-[var(--text-tertiary)] mb-3 sm:mb-4">
                 Connect on social media
               </p>
-              <div className="flex gap-3">
+              <div className="flex gap-2 sm:gap-3">
                 <a
                   href={personal.socialLinks.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full backdrop-blur-sm bg-[var(--bg-tertiary)]/50 flex items-center justify-center text-[var(--text-secondary)] hover:bg-gradient-to-r hover:from-[var(--accent-primary)] hover:to-[var(--accent-secondary)] hover:text-white transition-all duration-300 border border-[var(--neutral-200)]/10"
+                  className="w-8 h-8 sm:w-10 sm:h-10 rounded-full backdrop-blur-sm bg-[var(--bg-tertiary)]/50 flex items-center justify-center text-[var(--text-secondary)] hover:bg-gradient-to-r hover:from-[var(--accent-primary)] hover:to-[var(--accent-secondary)] hover:text-white transition-all duration-300 border border-[var(--neutral-200)]/10"
+                  aria-label="GitHub"
                 >
                   <svg
-                    className="w-5 h-5"
+                    className="w-4 h-4 sm:w-5 sm:h-5"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
@@ -205,10 +206,11 @@ const Contact = () => {
                   href={personal.socialLinks.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full backdrop-blur-sm bg-[var(--bg-tertiary)]/50 flex items-center justify-center text-[var(--text-secondary)] hover:bg-gradient-to-r hover:from-[var(--accent-primary)] hover:to-[var(--accent-secondary)] hover:text-white transition-all duration-300 border border-[var(--neutral-200)]/10"
+                  className="w-8 h-8 sm:w-10 sm:h-10 rounded-full backdrop-blur-sm bg-[var(--bg-tertiary)]/50 flex items-center justify-center text-[var(--text-secondary)] hover:bg-gradient-to-r hover:from-[var(--accent-primary)] hover:to-[var(--accent-secondary)] hover:text-white transition-all duration-300 border border-[var(--neutral-200)]/10"
+                  aria-label="LinkedIn"
                 >
                   <svg
-                    className="w-5 h-5"
+                    className="w-4 h-4 sm:w-5 sm:h-5"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
@@ -220,25 +222,21 @@ const Contact = () => {
           </div>
 
           {/* Right Column - Contact Form */}
-          <div
-            className="lg:col-span-3"
-            data-aos="fade-left"
-            data-aos-delay="300"
-          >
+          <div className="lg:col-span-3" data-aos="fade-left">
             <form
               onSubmit={handleSubmit}
-              className="backdrop-blur-md bg-[var(--bg-primary)]/70 rounded-2xl p-8 shadow-lg border border-[var(--neutral-200)]/10 hover:border-[var(--accent-primary)]/30 transition-all duration-500"
+              className="backdrop-blur-md bg-[var(--bg-primary)]/70 rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg border border-[var(--neutral-200)]/10 hover:border-[var(--accent-primary)]/30 transition-all duration-500 w-full"
             >
-              <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-6">
+              <h3 className="text-lg sm:text-xl font-semibold text-[var(--text-primary)] mb-4 sm:mb-6">
                 Send me a message
               </h3>
 
-              <div className="space-y-5">
+              <div className="space-y-4 sm:space-y-5">
                 {/* Name Input */}
-                <div data-aos="fade-up" data-aos-delay="350">
+                <div data-aos="fade-up">
                   <label
                     htmlFor="name"
-                    className="block text-sm font-medium text-[var(--text-primary)] mb-2"
+                    className="block text-xs sm:text-sm font-medium text-[var(--text-primary)] mb-1.5 sm:mb-2"
                   >
                     Your Name
                   </label>
@@ -249,16 +247,16 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 backdrop-blur-sm bg-[var(--bg-secondary)]/50 border border-[var(--neutral-200)]/20 rounded-xl text-[var(--text-primary)] placeholder-[var(--text-tertiary)] focus:outline-none focus:border-[var(--accent-primary)] focus:ring-1 focus:ring-[var(--accent-primary)] transition-all duration-300"
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 backdrop-blur-sm bg-[var(--bg-secondary)]/50 border border-[var(--neutral-200)]/20 rounded-lg sm:rounded-xl text-sm sm:text-base text-[var(--text-primary)] placeholder-[var(--text-tertiary)] focus:outline-none focus:border-[var(--accent-primary)] focus:ring-1 focus:ring-[var(--accent-primary)] transition-all duration-300"
                     placeholder="Full Name"
                   />
                 </div>
 
                 {/* Email Input */}
-                <div data-aos="fade-up" data-aos-delay="400">
+                <div data-aos="fade-up">
                   <label
                     htmlFor="email"
-                    className="block text-sm font-medium text-[var(--text-primary)] mb-2"
+                    className="block text-xs sm:text-sm font-medium text-[var(--text-primary)] mb-1.5 sm:mb-2"
                   >
                     Email Address
                   </label>
@@ -269,37 +267,37 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 backdrop-blur-sm bg-[var(--bg-secondary)]/50 border border-[var(--neutral-200)]/20 rounded-xl text-[var(--text-primary)] placeholder-[var(--text-tertiary)] focus:outline-none focus:border-[var(--accent-primary)] focus:ring-1 focus:ring-[var(--accent-primary)] transition-all duration-300"
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 backdrop-blur-sm bg-[var(--bg-secondary)]/50 border border-[var(--neutral-200)]/20 rounded-lg sm:rounded-xl text-sm sm:text-base text-[var(--text-primary)] placeholder-[var(--text-tertiary)] focus:outline-none focus:border-[var(--accent-primary)] focus:ring-1 focus:ring-[var(--accent-primary)] transition-all duration-300"
                     placeholder="email@example.com"
                   />
                 </div>
 
                 {/* Message Input */}
-                <div data-aos="fade-up" data-aos-delay="450">
+                <div data-aos="fade-up">
                   <label
                     htmlFor="message"
-                    className="block text-sm font-medium text-[var(--text-primary)] mb-2"
+                    className="block text-xs sm:text-sm font-medium text-[var(--text-primary)] mb-1.5 sm:mb-2"
                   >
                     Your Message
                   </label>
                   <textarea
                     id="message"
                     name="message"
-                    rows="5"
+                    rows="4"
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 backdrop-blur-sm bg-[var(--bg-secondary)]/50 border border-[var(--neutral-200)]/20 rounded-xl text-[var(--text-primary)] placeholder-[var(--text-tertiary)] focus:outline-none focus:border-[var(--accent-primary)] focus:ring-1 focus:ring-[var(--accent-primary)] transition-all duration-300 resize-none"
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 backdrop-blur-sm bg-[var(--bg-secondary)]/50 border border-[var(--neutral-200)]/20 rounded-lg sm:rounded-xl text-sm sm:text-base text-[var(--text-primary)] placeholder-[var(--text-tertiary)] focus:outline-none focus:border-[var(--accent-primary)] focus:ring-1 focus:ring-[var(--accent-primary)] transition-all duration-300 resize-none"
                     placeholder="Tell me about your project..."
                   ></textarea>
                 </div>
 
                 {/* Submit Button */}
-                <div data-aos="fade-up" data-aos-delay="500">
+                <div data-aos="fade-up">
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className={`w-full px-6 py-3 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-white font-medium rounded-xl transition-all duration-300 ${
+                    className={`w-full px-4 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-white text-sm sm:text-base font-medium rounded-lg sm:rounded-xl transition-all duration-300 ${
                       isSubmitting
                         ? "opacity-70 cursor-not-allowed"
                         : "hover:shadow-lg hover:shadow-[var(--accent-primary)]/25 hover:-translate-y-0.5"
@@ -308,7 +306,7 @@ const Contact = () => {
                     {isSubmitting ? (
                       <span className="flex items-center justify-center gap-2">
                         <svg
-                          className="w-5 h-5 animate-spin"
+                          className="w-4 h-4 sm:w-5 sm:h-5 animate-spin"
                           fill="none"
                           viewBox="0 0 24 24"
                         >
@@ -326,13 +324,13 @@ const Contact = () => {
                             d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                           ></path>
                         </svg>
-                        Sending...
+                        <span>Sending...</span>
                       </span>
                     ) : (
                       <span className="flex items-center justify-center gap-2">
                         Send Message
                         <svg
-                          className="w-5 h-5"
+                          className="w-4 h-4 sm:w-5 sm:h-5"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -352,7 +350,7 @@ const Contact = () => {
                 {/* Success Message */}
                 {submitStatus === "success" && (
                   <div
-                    className="mt-4 p-4 backdrop-blur-md bg-green-500/10 border border-green-500/20 rounded-xl text-green-600 text-sm text-center"
+                    className="mt-3 sm:mt-4 p-3 sm:p-4 backdrop-blur-md bg-green-500/10 border border-green-500/20 rounded-lg sm:rounded-xl text-green-600 text-xs sm:text-sm text-center"
                     data-aos="fade-up"
                   >
                     Message sent successfully! I'll get back to you soon.

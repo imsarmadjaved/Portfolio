@@ -11,88 +11,92 @@ const About = () => {
   return (
     <section
       id="about"
-      className="section bg-[var(--bg-secondary)] relative overflow-hidden"
+      className="section bg-[var(--bg-secondary)] relative overflow-hidden px-4 sm:px-6 lg:px-8"
     >
-      {/* Background decoration */}
-      <div className="absolute top-20 right-20 w-64 h-64 bg-[var(--accent-primary)]/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-20 left-20 w-64 h-64 bg-[var(--accent-secondary)]/10 rounded-full blur-3xl"></div>
+      {/* Background decoration - responsive sizing */}
+      <div className="absolute top-10 sm:top-20 right-10 sm:right-20 w-32 sm:w-48 lg:w-64 h-32 sm:h-48 lg:h-64 bg-[var(--accent-primary)]/10 rounded-full blur-2xl sm:blur-3xl"></div>
+      <div className="absolute bottom-10 sm:bottom-20 left-10 sm:left-20 w-32 sm:w-48 lg:w-64 h-32 sm:h-48 lg:h-64 bg-[var(--accent-secondary)]/10 rounded-full blur-2xl sm:blur-3xl"></div>
 
-      <div className="container-custom relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-12" data-aos="fade-down">
-          <span className="text-[var(--accent-primary)] text-sm font-medium uppercase tracking-wider mb-2 block">
+      <div className="container-custom relative z-10 mx-auto">
+        {/* Section Header - responsive spacing */}
+        <div
+          className="text-center mb-8 sm:mb-10 lg:mb-12 px-4"
+          data-aos="fade-down"
+        >
+          <span className="text-[var(--accent-primary)] text-xs sm:text-sm font-medium uppercase tracking-wider mb-1 sm:mb-2 block">
             Get to know me
           </span>
-          <h2 className="heading-2">About Me</h2>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[var(--text-primary)]">
+            About Me
+          </h2>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-3 gap-6 sm:gap-8">
           {/* Left Column */}
-          <div className="lg:col-span-2 space-y-6">
+          <div className="lg:col-span-2 space-y-4 sm:space-y-6">
             {/* Who I Am Card */}
             <div
-              className="backdrop-blur-md bg-[var(--bg-secondary)]/70 rounded-2xl p-6 shadow-lg border border-[var(--neutral-200)]/30 hover:border-[var(--accent-primary)]/30 transition-all duration-300"
+              className="backdrop-blur-md bg-[var(--bg-secondary)]/70 rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg border border-[var(--neutral-200)]/30 hover:border-[var(--accent-primary)]/30 transition-all duration-300"
               data-aos="fade-right"
-              data-aos-delay="100"
             >
-              <h3 className="text-xl font-semibold mb-4 text-[var(--text-primary)]">
+              <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-[var(--text-primary)]">
                 Who I Am
               </h3>
-              <p className="text-[var(--text-secondary)] leading-relaxed">
+              <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed">
                 {about.summary}
               </p>
 
-              {/* Quick Info Grid */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 pt-6 border-t border-[var(--neutral-200)]/30">
+              {/* Quick Info Grid - responsive layout */}
+              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-[var(--neutral-200)]/30">
                 <div>
-                  <span className="text-xs text-[var(--text-tertiary)] block mb-1">
+                  <span className="text-[10px] sm:text-xs text-[var(--text-tertiary)] block mb-0.5 sm:mb-1">
                     Name
                   </span>
-                  <span className="text-sm font-medium text-[var(--text-primary)]">
+                  <span className="text-xs sm:text-sm font-medium text-[var(--text-primary)] break-words">
                     {personal.name}
                   </span>
                 </div>
                 <div>
-                  <span className="text-xs text-[var(--text-tertiary)] block mb-1">
+                  <span className="text-[10px] sm:text-xs text-[var(--text-tertiary)] block mb-0.5 sm:mb-1">
                     Location
                   </span>
-                  <span className="text-sm font-medium text-[var(--text-primary)]">
+                  <span className="text-xs sm:text-sm font-medium text-[var(--text-primary)]">
                     {personal.location}
                   </span>
                 </div>
                 <div>
-                  <span className="text-xs text-[var(--text-tertiary)] block mb-1">
+                  <span className="text-[10px] sm:text-xs text-[var(--text-tertiary)] block mb-0.5 sm:mb-1">
                     Email
                   </span>
                   <a
                     href={`mailto:${personal.email}`}
-                    className="text-sm font-medium text-[var(--accent-primary)] hover:underline"
+                    className="text-xs sm:text-sm font-medium text-[var(--accent-primary)] hover:underline break-words"
                   >
                     {personal.email}
                   </a>
                 </div>
                 <div>
-                  <span className="text-xs text-[var(--text-tertiary)] block mb-1">
+                  <span className="text-[10px] sm:text-xs text-[var(--text-tertiary)] block mb-0.5 sm:mb-1">
                     Status
                   </span>
-                  <span className="text-sm font-medium text-[var(--text-primary)]">
+                  <span className="text-xs sm:text-sm font-medium text-[var(--text-primary)]">
                     {personal.availability}
                   </span>
                 </div>
               </div>
             </div>
 
-            {/* Highlights */}
-            <div className="grid grid-cols-2 gap-4 items-center">
+            {/* Highlights - responsive grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               {about.highlights.map((highlight, index) => (
-                <div key={index} data-aos="fade-up" data-aos-delay="100">
-                  <div className="backdrop-blur-md bg-[var(--bg-secondary)]/70 rounded-2xl p-4 flex items-center gap-3 shadow-lg border border-[var(--neutral-200)]/30 hover:border-[var(--accent-primary)]/30 transition-all duration-300 hover:-translate-y-1">
-                    <div className="w-8 h-8 rounded-lg bg-[var(--accent-primary)]/20 backdrop-blur-sm flex items-center justify-center flex-shrink-0">
-                      <span className="text-[var(--accent-primary)] font-semibold">
+                <div key={index} data-aos="fade-up">
+                  <div className="backdrop-blur-md bg-[var(--bg-secondary)]/70 rounded-xl sm:rounded-2xl p-3 sm:p-4 flex items-center gap-2 sm:gap-3 shadow-lg border border-[var(--neutral-200)]/30 hover:border-[var(--accent-primary)]/30 transition-all duration-300 hover:-translate-y-1">
+                    <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-lg bg-[var(--accent-primary)]/20 backdrop-blur-sm flex items-center justify-center flex-shrink-0">
+                      <span className="text-xs sm:text-sm text-[var(--accent-primary)] font-semibold">
                         {index + 1}
                       </span>
                     </div>
-                    <p className="text-sm text-[var(--text-primary)] font-medium">
+                    <p className="text-xs sm:text-sm text-[var(--text-primary)] font-medium break-words">
                       {highlight}
                     </p>
                   </div>
@@ -102,16 +106,12 @@ const About = () => {
           </div>
 
           {/* Right Column */}
-          <div
-            className="lg:col-span-1"
-            data-aos="fade-left"
-            data-aos-delay="200"
-          >
+          <div className="lg:col-span-1" data-aos="fade-left">
             {/* Education Card */}
-            <div className="sticky top-24 backdrop-blur-md bg-[var(--bg-secondary)]/70 rounded-2xl p-6 shadow-lg border border-[var(--neutral-200)]/30 hover:border-[var(--accent-primary)]/30 transition-all duration-300">
-              <h3 className="text-xl font-semibold mb-6 text-[var(--text-primary)] flex items-center gap-2">
+            <div className="lg:sticky lg:top-24 backdrop-blur-md bg-[var(--bg-secondary)]/70 rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg border border-[var(--neutral-200)]/30 hover:border-[var(--accent-primary)]/30 transition-all duration-300">
+              <h3 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6 text-[var(--text-primary)] flex items-center gap-2">
                 <svg
-                  className="w-5 h-5 text-[var(--accent-primary)]"
+                  className="w-4 h-4 sm:w-5 sm:h-5 text-[var(--accent-primary)]"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -128,46 +128,45 @@ const About = () => {
                 Education
               </h3>
 
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 {education.map((edu, index) => (
-                  <div
-                    key={index}
-                    data-aos="fade-up"
-                    data-aos-delay={250 + index * 50}
-                  >
-                    <div className="relative pl-4 border-l-2 border-[var(--accent-primary)]/30 last:pb-0">
-                      <div className="absolute left-[-5px] top-1 w-2 h-2 rounded-full bg-[var(--accent-primary)]"></div>
+                  <div key={index} data-aos="fade-up">
+                    <div className="relative pl-3 sm:pl-4 border-l-2 border-[var(--accent-primary)]/30 last:pb-0">
+                      <div className="absolute left-[-5px] top-1 w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[var(--accent-primary)]"></div>
                       <div className="mb-1">
-                        <h4 className="font-semibold text-[var(--text-primary)] text-base">
+                        <h4 className="font-semibold text-[var(--text-primary)] text-sm sm:text-base break-words pr-2">
                           {edu.degree}
                         </h4>
-                        <p className="text-[var(--accent-primary)] text-sm font-medium">
+                        <p className="text-[var(--accent-primary)] text-xs sm:text-sm font-medium break-words">
                           {edu.institution}
                         </p>
                       </div>
-                      <div className="flex items-center gap-2 text-xs text-[var(--text-tertiary)] mb-2">
+                      <div className="flex flex-wrap items-center gap-1 sm:gap-2 text-[10px] sm:text-xs text-[var(--text-tertiary)] mb-1 sm:mb-2">
                         <span>{edu.duration}</span>
                         {edu.grade && (
                           <>
-                            <span>•</span>
-                            <span className="text-[var(--accent-primary)]">
+                            <span className="hidden sm:inline">•</span>
+                            <span className="text-[var(--accent-primary)] w-full sm:w-auto">
                               {edu.grade}
                             </span>
                           </>
                         )}
                       </div>
                       {edu.courses && (
-                        <div className="flex flex-wrap gap-1.5 mt-2">
+                        <div className="flex flex-wrap gap-1 sm:gap-1.5 mt-1 sm:mt-2">
                           {edu.courses.slice(0, 2).map((course, idx) => (
                             <span
                               key={idx}
-                              className="text-[10px] px-2 py-0.5 bg-[var(--bg-tertiary)]/50 backdrop-blur-sm text-[var(--text-secondary)] rounded-full"
+                              className="text-[8px] sm:text-[10px] px-1.5 sm:px-2 py-0.5 bg-[var(--bg-tertiary)]/50 backdrop-blur-sm text-[var(--text-secondary)] rounded-full truncate max-w-[120px] sm:max-w-none"
+                              title={course}
                             >
-                              {course}
+                              {course.length > 15
+                                ? `${course.substring(0, 15)}...`
+                                : course}
                             </span>
                           ))}
                           {edu.courses.length > 2 && (
-                            <span className="text-[10px] px-2 py-0.5 bg-[var(--bg-tertiary)]/50 backdrop-blur-sm text-[var(--text-secondary)] rounded-full">
+                            <span className="text-[8px] sm:text-[10px] px-1.5 sm:px-2 py-0.5 bg-[var(--bg-tertiary)]/50 backdrop-blur-sm text-[var(--text-secondary)] rounded-full">
                               +{edu.courses.length - 2}
                             </span>
                           )}
@@ -180,17 +179,16 @@ const About = () => {
 
               {/* Resume Button */}
               <div
-                className="mt-6 pt-6 border-t border-[var(--neutral-200)]/30"
+                className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-[var(--neutral-200)]/30"
                 data-aos="fade-up"
-                data-aos-delay="400"
               >
                 <a
                   href={encodedResumeUrl}
                   download="Muhammad_Sarmad_Javed_Resume.pdf"
-                  className="w-full px-6 py-3 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-white font-medium rounded-xl hover:shadow-lg hover:shadow-[var(--accent-primary)]/25 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center"
+                  className="w-full px-4 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-white font-medium text-sm sm:text-base rounded-lg sm:rounded-xl hover:shadow-lg hover:shadow-[var(--accent-primary)]/25 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center"
                 >
                   <svg
-                    className="w-4 h-4 mr-2"
+                    className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1.5 sm:mr-2"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"

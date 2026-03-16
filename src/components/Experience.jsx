@@ -8,39 +8,42 @@ const Experience = () => {
   return (
     <section
       id="experience"
-      className="py-20 bg-[var(--bg-primary)] relative overflow-hidden"
+      className="py-12 sm:py-16 lg:py-20 bg-[var(--bg-primary)] relative overflow-hidden px-4 sm:px-6 lg:px-8"
     >
-      {/* Background decoration */}
-      <div className="absolute top-20 right-20 w-96 h-96 bg-[var(--accent-primary)]/10 rounded-full blur-3xl animate-pulse-slow"></div>
+      {/* Background decoration - responsive sizing */}
+      <div className="absolute top-10 sm:top-20 right-10 sm:right-20 w-48 sm:w-72 lg:w-96 h-48 sm:h-72 lg:h-96 bg-[var(--accent-primary)]/10 rounded-full blur-2xl lg:blur-3xl animate-pulse-slow"></div>
       <div
-        className="absolute bottom-20 left-20 w-96 h-96 bg-[var(--accent-secondary)]/10 rounded-full blur-3xl animate-pulse-slow"
+        className="absolute bottom-10 sm:bottom-20 left-10 sm:left-20 w-48 sm:w-72 lg:w-96 h-48 sm:h-72 lg:h-96 bg-[var(--accent-secondary)]/10 rounded-full blur-2xl lg:blur-3xl animate-pulse-slow"
         style={{ animationDelay: "2s" }}
       ></div>
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[var(--accent-primary)]/5 rounded-full blur-3xl"></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 sm:w-96 lg:w-[500px] h-64 sm:h-96 lg:h-[500px] bg-[var(--accent-primary)]/5 rounded-full blur-2xl lg:blur-3xl"></div>
 
-      <div className="container-custom relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-16" data-aos="fade-down">
-          <span className="text-[var(--accent-primary)] text-sm font-medium uppercase tracking-wider mb-3 block">
+      <div className="container-custom relative z-10 mx-auto">
+        {/* Section Header - responsive spacing and text */}
+        <div
+          className="text-center mb-10 sm:mb-14 lg:mb-16 px-4"
+          data-aos="fade-down"
+        >
+          <span className="text-[var(--accent-primary)] text-xs sm:text-sm font-medium uppercase tracking-wider mb-2 sm:mb-3 block">
             My Journey
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-4 relative inline-block">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-3 sm:mb-4 relative inline-block">
             Experience & Education
-            <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] rounded-full"></div>
+            <div className="absolute -bottom-2 sm:-bottom-3 left-1/2 transform -translate-x-1/2 w-16 sm:w-20 h-0.5 sm:h-1 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] rounded-full"></div>
           </h2>
-          <p className="text-[var(--text-secondary)] mt-6 max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base text-[var(--text-secondary)] mt-4 sm:mt-6 max-w-2xl mx-auto px-4">
             My professional journey and academic background
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8">
+        <div className="grid lg:grid-cols-2 gap-6 sm:gap-8">
           {/* Experience Column */}
-          <div data-aos="fade-right" data-aos-delay="200">
+          <div data-aos="fade-right">
             <div>
-              <div className="flex items-center gap-3 mb-8">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[var(--accent-primary)]/20 to-[var(--accent-secondary)]/20 backdrop-blur-sm flex items-center justify-center">
+              <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8 px-2">
+                <div className="w-8 h-8 sm:w-10 lg:w-12 sm:h-10 lg:h-12 rounded-full bg-gradient-to-br from-[var(--accent-primary)]/20 to-[var(--accent-secondary)]/20 backdrop-blur-sm flex items-center justify-center flex-shrink-0">
                   <svg
-                    className="w-6 h-6 text-[var(--accent-primary)]"
+                    className="w-4 h-4 sm:w-5 lg:w-6 sm:h-5 lg:h-6 text-[var(--accent-primary)]"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -53,42 +56,41 @@ const Experience = () => {
                     />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-semibold text-[var(--text-primary)]">
+                <h3 className="text-xl sm:text-2xl font-semibold text-[var(--text-primary)]">
                   Work Experience
                 </h3>
               </div>
 
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 {experience.map((exp, index) => (
                   <div
                     key={index}
-                    className="group backdrop-blur-md bg-[var(--bg-secondary)]/70 rounded-2xl p-6 shadow-lg border border-[var(--neutral-200)]/10 hover:border-[var(--accent-primary)]/30 transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
+                    className="group backdrop-blur-md bg-[var(--bg-secondary)]/70 rounded-xl sm:rounded-2xl p-4 sm:p-5 lg:p-6 shadow-lg border border-[var(--neutral-200)]/10 hover:border-[var(--accent-primary)]/30 transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
                     data-aos="fade-up"
-                    data-aos-delay={300 + index * 100}
                   >
                     {/* Hover gradient overlay */}
-                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
+                    <div className="absolute inset-0 rounded-xl sm:rounded-2xl bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
 
                     <div className="relative z-10">
                       {/* Header */}
-                      <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
-                        <div>
-                          <h4 className="text-xl font-semibold text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors duration-300">
+                      <div className="flex flex-wrap items-start justify-between gap-2 sm:gap-3 mb-3 sm:mb-4">
+                        <div className="flex-1 min-w-0">
+                          <h4 className="text-base sm:text-lg lg:text-xl font-semibold text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors duration-300 break-words pr-2">
                             {exp.position}
                           </h4>
-                          <p className="text-[var(--accent-primary)] font-medium mt-1">
+                          <p className="text-sm sm:text-base text-[var(--accent-primary)] font-medium mt-0.5 sm:mt-1 break-words">
                             {exp.company}
                           </p>
                         </div>
-                        <span className="px-3 py-1 backdrop-blur-sm bg-[var(--bg-tertiary)]/50 text-[var(--text-secondary)] text-sm rounded-full border border-[var(--neutral-200)]/10">
+                        <span className="px-2 sm:px-3 py-0.5 sm:py-1 backdrop-blur-sm bg-[var(--bg-tertiary)]/50 text-[var(--text-secondary)] text-xs sm:text-sm rounded-full border border-[var(--neutral-200)]/10 whitespace-nowrap">
                           {exp.duration}
                         </span>
                       </div>
 
                       {/* Location */}
-                      <div className="flex items-center gap-2 text-sm text-[var(--text-tertiary)] mb-4">
+                      <div className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-[var(--text-tertiary)] mb-3 sm:mb-4">
                         <svg
-                          className="w-4 h-4"
+                          className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -106,25 +108,25 @@ const Experience = () => {
                             d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                           />
                         </svg>
-                        <span>{exp.location}</span>
+                        <span className="break-words">{exp.location}</span>
                       </div>
 
                       {/* Description */}
-                      <p className="text-[var(--text-secondary)] mb-4 text-sm leading-relaxed">
+                      <p className="text-[var(--text-secondary)] mb-3 sm:mb-4 text-xs sm:text-sm leading-relaxed">
                         {exp.description}
                       </p>
 
                       {/* Achievements */}
-                      <ul className="space-y-2">
+                      <ul className="space-y-1.5 sm:space-y-2">
                         {exp.achievements.map((achievement, idx) => (
                           <li
                             key={idx}
-                            className="flex items-start gap-2 text-sm text-[var(--text-secondary)]"
+                            className="flex items-start gap-1.5 sm:gap-2 text-xs sm:text-sm text-[var(--text-secondary)]"
                           >
-                            <span className="text-[var(--accent-primary)] mt-1 text-lg">
+                            <span className="text-[var(--accent-primary)] text-base sm:text-lg leading-none flex-shrink-0">
                               •
                             </span>
-                            <span>{achievement}</span>
+                            <span className="break-words">{achievement}</span>
                           </li>
                         ))}
                       </ul>
@@ -136,12 +138,12 @@ const Experience = () => {
           </div>
 
           {/* Education Column */}
-          <div data-aos="fade-left" data-aos-delay="200">
+          <div data-aos="fade-left">
             <div>
-              <div className="flex items-center gap-3 mb-8">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[var(--accent-secondary)]/20 to-[var(--accent-primary)]/20 backdrop-blur-sm flex items-center justify-center">
+              <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8 px-2">
+                <div className="w-8 h-8 sm:w-10 lg:w-12 sm:h-10 lg:h-12 rounded-full bg-gradient-to-br from-[var(--accent-secondary)]/20 to-[var(--accent-primary)]/20 backdrop-blur-sm flex items-center justify-center flex-shrink-0">
                   <svg
-                    className="w-6 h-6 text-[var(--accent-secondary)]"
+                    className="w-4 h-4 sm:w-5 lg:w-6 sm:h-5 lg:h-6 text-[var(--accent-secondary)]"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -156,43 +158,42 @@ const Experience = () => {
                     />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-semibold text-[var(--text-primary)]">
+                <h3 className="text-xl sm:text-2xl font-semibold text-[var(--text-primary)]">
                   Education
                 </h3>
               </div>
 
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 {education.map((edu, index) => (
                   <div
                     key={index}
-                    className="group backdrop-blur-md bg-[var(--bg-secondary)]/70 rounded-2xl p-6 shadow-lg border border-[var(--neutral-200)]/10 hover:border-[var(--accent-primary)]/30 transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
+                    className="group backdrop-blur-md bg-[var(--bg-secondary)]/70 rounded-xl sm:rounded-2xl p-4 sm:p-5 lg:p-6 shadow-lg border border-[var(--neutral-200)]/10 hover:border-[var(--accent-primary)]/30 transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
                     data-aos="fade-up"
-                    data-aos-delay={300 + index * 100}
                   >
                     {/* Hover gradient overlay */}
-                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
+                    <div className="absolute inset-0 rounded-xl sm:rounded-2xl bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
 
                     <div className="relative z-10">
                       {/* Header */}
-                      <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
-                        <div>
-                          <h4 className="text-xl font-semibold text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors duration-300">
+                      <div className="flex flex-wrap items-start justify-between gap-2 sm:gap-3 mb-3 sm:mb-4">
+                        <div className="flex-1 min-w-0">
+                          <h4 className="text-base sm:text-lg lg:text-xl font-semibold text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors duration-300 break-words pr-2">
                             {edu.degree}
                           </h4>
-                          <p className="text-[var(--accent-secondary)] font-medium mt-1">
+                          <p className="text-sm sm:text-base text-[var(--accent-secondary)] font-medium mt-0.5 sm:mt-1 break-words">
                             {edu.institution}
                           </p>
                         </div>
-                        <span className="px-3 py-1 backdrop-blur-sm bg-[var(--bg-tertiary)]/50 text-[var(--text-secondary)] text-sm rounded-full border border-[var(--neutral-200)]/10">
+                        <span className="px-2 sm:px-3 py-0.5 sm:py-1 backdrop-blur-sm bg-[var(--bg-tertiary)]/50 text-[var(--text-secondary)] text-xs sm:text-sm rounded-full border border-[var(--neutral-200)]/10 whitespace-nowrap">
                           {edu.duration}
                         </span>
                       </div>
 
                       {/* Location & Grade */}
-                      <div className="flex flex-wrap items-center gap-4 text-sm text-[var(--text-tertiary)] mb-4">
-                        <div className="flex items-center gap-2">
+                      <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-xs sm:text-sm text-[var(--text-tertiary)] mb-3 sm:mb-4">
+                        <div className="flex items-center gap-1.5 sm:gap-2">
                           <svg
-                            className="w-4 h-4"
+                            className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -210,14 +211,14 @@ const Experience = () => {
                               d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                             />
                           </svg>
-                          <span>{edu.location}</span>
+                          <span className="break-words">{edu.location}</span>
                         </div>
                         {edu.grade && (
                           <>
-                            <span className="w-1 h-1 bg-[var(--text-tertiary)] rounded-full"></span>
-                            <div className="flex items-center gap-2">
+                            <span className="hidden sm:inline w-1 h-1 bg-[var(--text-tertiary)] rounded-full"></span>
+                            <div className="flex items-center gap-1.5 sm:gap-2 w-full sm:w-auto">
                               <svg
-                                className="w-4 h-4"
+                                className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0"
                                 fill="none"
                                 stroke="currentColor"
                                 viewBox="0 0 24 24"
@@ -229,7 +230,7 @@ const Experience = () => {
                                   d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
                                 />
                               </svg>
-                              <span className="text-[var(--accent-primary)]">
+                              <span className="text-[var(--accent-primary)] break-words">
                                 {edu.grade}
                               </span>
                             </div>
@@ -239,15 +240,15 @@ const Experience = () => {
 
                       {/* Courses */}
                       {edu.courses && (
-                        <div className="mt-4">
-                          <p className="text-sm font-medium text-[var(--text-primary)] mb-2">
+                        <div className="mt-3 sm:mt-4">
+                          <p className="text-xs sm:text-sm font-medium text-[var(--text-primary)] mb-1.5 sm:mb-2">
                             Relevant Courses:
                           </p>
-                          <div className="flex flex-wrap gap-2">
+                          <div className="flex flex-wrap gap-1.5 sm:gap-2">
                             {edu.courses.map((course, idx) => (
                               <span
                                 key={idx}
-                                className="px-3 py-1 backdrop-blur-sm bg-[var(--bg-tertiary)]/50 text-[var(--text-secondary)] text-xs rounded-full border border-[var(--neutral-200)]/10"
+                                className="px-2 sm:px-3 py-0.5 sm:py-1 backdrop-blur-sm bg-[var(--bg-tertiary)]/50 text-[var(--text-secondary)] text-[10px] sm:text-xs rounded-full border border-[var(--neutral-200)]/10 break-words"
                               >
                                 {course}
                               </span>

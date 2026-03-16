@@ -20,23 +20,19 @@ function App() {
       useClassNames: false,
 
       // Duration and timing
-      duration: 800,
+      duration: 1000,
+      once: true,
+      offset: 120,
       easing: "ease-in-out",
       delay: 100,
-
-      // Behavior
-      once: false, // whether animation should happen only once - while scrolling down
-      mirror: true, // whether elements should animate out while scrolling past them
-      offset: 120, // offset (in px) from the original trigger point
+      mirror: false,
 
       // Anchor placement
       anchorPlacement: "top-bottom", // defines which position of the element regarding to window should trigger the animation
     });
 
     // Refresh AOS on window resize
-    window.addEventListener("resize", () => {
-      AOS.refresh();
-    });
+    AOS.refresh();
 
     // Initial refresh
     setTimeout(() => {
