@@ -20,7 +20,7 @@ function App() {
       useClassNames: false,
 
       // Duration and timing
-      duration: 1000,
+      duration: 800,
       once: true,
       offset: 120,
       easing: "ease-in-out",
@@ -28,7 +28,7 @@ function App() {
       mirror: false,
 
       // Anchor placement
-      anchorPlacement: "top-bottom", // defines which position of the element regarding to window should trigger the animation
+      anchorPlacement: "top-bottom",
     });
 
     // Refresh AOS on window resize
