@@ -1,6 +1,6 @@
+// src/components/Contact.jsx
 import React, { useState } from "react";
 import { portfolioData } from "../data/PortfolioData";
-import AnimationWrapper from "./AnimationWrapper";
 
 const Contact = () => {
   const { personal } = portfolioData;
@@ -103,15 +103,12 @@ const Contact = () => {
     },
   ];
 
-  // Encode the filename for resume
-  const encodedResumeUrl = encodeURI(personal.resumeUrl);
-
   return (
     <section
       id="contact"
       className="py-20 bg-[var(--bg-secondary)] relative overflow-hidden"
     >
-      {/* Enhanced background decoration for glass effect */}
+      {/* Background decoration */}
       <div className="absolute top-20 left-20 w-96 h-96 bg-[var(--accent-primary)]/10 rounded-full blur-3xl animate-pulse-slow"></div>
       <div
         className="absolute bottom-20 right-20 w-96 h-96 bg-[var(--accent-secondary)]/10 rounded-full blur-3xl animate-pulse-slow"
@@ -121,33 +118,32 @@ const Contact = () => {
 
       <div className="container-custom relative z-10">
         {/* Section Header */}
-        <AnimationWrapper direction="down">
-          <div className="text-center mb-16">
-            <span className="text-[var(--accent-primary)] text-sm font-medium uppercase tracking-wider mb-3 block">
-              Get In Touch
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-4 relative inline-block">
-              Contact Me
-              <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] rounded-full"></div>
-            </h2>
-            <p className="text-[var(--text-secondary)] mt-6 max-w-2xl mx-auto">
-              Have a question or want to work together? I'd love to hear from
-              you.
-            </p>
-          </div>
-        </AnimationWrapper>
+        <div className="text-center mb-16" data-aos="fade-down">
+          <span className="text-[var(--accent-primary)] text-sm font-medium uppercase tracking-wider mb-3 block">
+            Get In Touch
+          </span>
+          <h2 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-4 relative inline-block">
+            Contact Me
+            <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] rounded-full"></div>
+          </h2>
+          <p className="text-[var(--text-secondary)] mt-6 max-w-2xl mx-auto">
+            Have a question or want to work together? I'd love to hear from you.
+          </p>
+        </div>
 
         <div className="grid lg:grid-cols-5 gap-8 max-w-6xl mx-auto">
-          {/* Left Column - All contact info animates as one unit */}
-          <AnimationWrapper
-            direction="left"
-            delay={0.2}
+          {/* Left Column - Contact Info */}
+          <div
             className="lg:col-span-2 space-y-6"
+            data-aos="fade-right"
+            data-aos-delay="200"
           >
             {contactInfo.map((info, index) => (
               <div
                 key={index}
                 className="group backdrop-blur-md bg-[var(--bg-primary)]/70 rounded-2xl p-6 shadow-lg border border-[var(--neutral-200)]/10 hover:border-[var(--accent-primary)]/30 transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
+                data-aos="fade-up"
+                data-aos-delay={250 + index * 50}
               >
                 {/* Hover gradient overlay */}
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
@@ -174,16 +170,15 @@ const Contact = () => {
                     )}
                   </div>
                 </div>
-
-                {/* Glass glow effect on hover */}
-                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] opacity-20 blur-md"></div>
-                </div>
               </div>
             ))}
 
-            {/* Social Links - Glassy Card */}
-            <div className="backdrop-blur-md bg-[var(--bg-primary)]/70 rounded-2xl p-6 shadow-lg border border-[var(--neutral-200)]/10 hover:border-[var(--accent-primary)]/30 transition-all duration-500">
+            {/* Social Links */}
+            <div
+              className="backdrop-blur-md bg-[var(--bg-primary)]/70 rounded-2xl p-6 shadow-lg border border-[var(--neutral-200)]/10 hover:border-[var(--accent-primary)]/30 transition-all duration-500"
+              data-aos="fade-up"
+              data-aos-delay="400"
+            >
               <p className="text-sm text-[var(--text-tertiary)] mb-4">
                 Connect on social media
               </p>
@@ -222,13 +217,13 @@ const Contact = () => {
                 </a>
               </div>
             </div>
-          </AnimationWrapper>
+          </div>
 
-          {/* Right Column - Contact Form animates as one unit */}
-          <AnimationWrapper
-            direction="right"
-            delay={0.3}
+          {/* Right Column - Contact Form */}
+          <div
             className="lg:col-span-3"
+            data-aos="fade-left"
+            data-aos-delay="300"
           >
             <form
               onSubmit={handleSubmit}
@@ -240,7 +235,7 @@ const Contact = () => {
 
               <div className="space-y-5">
                 {/* Name Input */}
-                <div>
+                <div data-aos="fade-up" data-aos-delay="350">
                   <label
                     htmlFor="name"
                     className="block text-sm font-medium text-[var(--text-primary)] mb-2"
@@ -260,7 +255,7 @@ const Contact = () => {
                 </div>
 
                 {/* Email Input */}
-                <div>
+                <div data-aos="fade-up" data-aos-delay="400">
                   <label
                     htmlFor="email"
                     className="block text-sm font-medium text-[var(--text-primary)] mb-2"
@@ -280,7 +275,7 @@ const Contact = () => {
                 </div>
 
                 {/* Message Input */}
-                <div>
+                <div data-aos="fade-up" data-aos-delay="450">
                   <label
                     htmlFor="message"
                     className="block text-sm font-medium text-[var(--text-primary)] mb-2"
@@ -300,67 +295,72 @@ const Contact = () => {
                 </div>
 
                 {/* Submit Button */}
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className={`w-full px-6 py-3 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-white font-medium rounded-xl transition-all duration-300 ${
-                    isSubmitting
-                      ? "opacity-70 cursor-not-allowed"
-                      : "hover:shadow-lg hover:shadow-[var(--accent-primary)]/25 hover:-translate-y-0.5"
-                  }`}
-                >
-                  {isSubmitting ? (
-                    <span className="flex items-center justify-center gap-2">
-                      <svg
-                        className="w-5 h-5 animate-spin"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                      >
-                        <circle
-                          className="opacity-25"
-                          cx="12"
-                          cy="12"
-                          r="10"
+                <div data-aos="fade-up" data-aos-delay="500">
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className={`w-full px-6 py-3 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-white font-medium rounded-xl transition-all duration-300 ${
+                      isSubmitting
+                        ? "opacity-70 cursor-not-allowed"
+                        : "hover:shadow-lg hover:shadow-[var(--accent-primary)]/25 hover:-translate-y-0.5"
+                    }`}
+                  >
+                    {isSubmitting ? (
+                      <span className="flex items-center justify-center gap-2">
+                        <svg
+                          className="w-5 h-5 animate-spin"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <circle
+                            className="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="4"
+                          ></circle>
+                          <path
+                            className="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                          ></path>
+                        </svg>
+                        Sending...
+                      </span>
+                    ) : (
+                      <span className="flex items-center justify-center gap-2">
+                        Send Message
+                        <svg
+                          className="w-5 h-5"
+                          fill="none"
                           stroke="currentColor"
-                          strokeWidth="4"
-                        ></circle>
-                        <path
-                          className="opacity-75"
-                          fill="currentColor"
-                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                        ></path>
-                      </svg>
-                      Sending...
-                    </span>
-                  ) : (
-                    <span className="flex items-center justify-center gap-2">
-                      Send Message
-                      <svg
-                        className="w-5 h-5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
-                        />
-                      </svg>
-                    </span>
-                  )}
-                </button>
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+                          />
+                        </svg>
+                      </span>
+                    )}
+                  </button>
+                </div>
 
-                {/* Success Message - Glassy */}
+                {/* Success Message */}
                 {submitStatus === "success" && (
-                  <div className="mt-4 p-4 backdrop-blur-md bg-green-500/10 border border-green-500/20 rounded-xl text-green-600 text-sm text-center">
+                  <div
+                    className="mt-4 p-4 backdrop-blur-md bg-green-500/10 border border-green-500/20 rounded-xl text-green-600 text-sm text-center"
+                    data-aos="fade-up"
+                  >
                     Message sent successfully! I'll get back to you soon.
                   </div>
                 )}
               </div>
             </form>
-          </AnimationWrapper>
+          </div>
         </div>
       </div>
     </section>

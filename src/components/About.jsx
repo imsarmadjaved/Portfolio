@@ -1,6 +1,6 @@
+// src/components/About.jsx
 import React from "react";
 import { portfolioData } from "../data/PortfolioData";
-import AnimationWrapper from "./AnimationWrapper";
 
 const About = () => {
   const { about, personal, education } = portfolioData;
@@ -13,30 +13,28 @@ const About = () => {
       id="about"
       className="section bg-[var(--bg-secondary)] relative overflow-hidden"
     >
-      {/* Background decoration for glass effect */}
+      {/* Background decoration */}
       <div className="absolute top-20 right-20 w-64 h-64 bg-[var(--accent-primary)]/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-20 left-20 w-64 h-64 bg-[var(--accent-secondary)]/10 rounded-full blur-3xl"></div>
 
       <div className="container-custom relative z-10">
         {/* Section Header */}
-        <AnimationWrapper direction="down">
-          <div className="text-center mb-12">
-            <span className="text-[var(--accent-primary)] text-sm font-medium uppercase tracking-wider mb-2 block">
-              Get to know me
-            </span>
-            <h2 className="heading-2">About Me</h2>
-          </div>
-        </AnimationWrapper>
+        <div className="text-center mb-12" data-aos="fade-down">
+          <span className="text-[var(--accent-primary)] text-sm font-medium uppercase tracking-wider mb-2 block">
+            Get to know me
+          </span>
+          <h2 className="heading-2">About Me</h2>
+        </div>
 
         <div className="grid lg:grid-cols-3 gap-8">
-          {/* Left Column - Profile Summary */}
-          <AnimationWrapper
-            direction="left"
-            delay={0.2}
-            className="lg:col-span-2 space-y-6"
-          >
-            {/* Who I Am Card - Glassy */}
-            <div className="backdrop-blur-md bg-[var(--bg-secondary)]/70 rounded-2xl p-6 shadow-lg border border-[var(--neutral-200)]/30 hover:border-[var(--accent-primary)]/30 transition-all duration-300">
+          {/* Left Column */}
+          <div className="lg:col-span-2 space-y-6">
+            {/* Who I Am Card */}
+            <div
+              className="backdrop-blur-md bg-[var(--bg-secondary)]/70 rounded-2xl p-6 shadow-lg border border-[var(--neutral-200)]/30 hover:border-[var(--accent-primary)]/30 transition-all duration-300"
+              data-aos="fade-right"
+              data-aos-delay="100"
+            >
               <h3 className="text-xl font-semibold mb-4 text-[var(--text-primary)]">
                 Who I Am
               </h3>
@@ -84,14 +82,10 @@ const About = () => {
               </div>
             </div>
 
-            {/* Highlights - Glassy Cards */}
+            {/* Highlights */}
             <div className="grid grid-cols-2 gap-4 items-center">
               {about.highlights.map((highlight, index) => (
-                <AnimationWrapper
-                  key={index}
-                  direction="up"
-                  delay={0.3 + index * 0.1}
-                >
+                <div key={index} data-aos="fade-up" data-aos-delay="100">
                   <div className="backdrop-blur-md bg-[var(--bg-secondary)]/70 rounded-2xl p-4 flex items-center gap-3 shadow-lg border border-[var(--neutral-200)]/30 hover:border-[var(--accent-primary)]/30 transition-all duration-300 hover:-translate-y-1">
                     <div className="w-8 h-8 rounded-lg bg-[var(--accent-primary)]/20 backdrop-blur-sm flex items-center justify-center flex-shrink-0">
                       <span className="text-[var(--accent-primary)] font-semibold">
@@ -102,18 +96,18 @@ const About = () => {
                       {highlight}
                     </p>
                   </div>
-                </AnimationWrapper>
+                </div>
               ))}
             </div>
-          </AnimationWrapper>
+          </div>
 
-          {/* Right Column - Education */}
-          <AnimationWrapper
-            direction="right"
-            delay={0.2}
+          {/* Right Column */}
+          <div
             className="lg:col-span-1"
+            data-aos="fade-left"
+            data-aos-delay="200"
           >
-            {/* Education Card - Glassy */}
+            {/* Education Card */}
             <div className="sticky top-24 backdrop-blur-md bg-[var(--bg-secondary)]/70 rounded-2xl p-6 shadow-lg border border-[var(--neutral-200)]/30 hover:border-[var(--accent-primary)]/30 transition-all duration-300">
               <h3 className="text-xl font-semibold mb-6 text-[var(--text-primary)] flex items-center gap-2">
                 <svg
@@ -136,10 +130,10 @@ const About = () => {
 
               <div className="space-y-6">
                 {education.map((edu, index) => (
-                  <AnimationWrapper
+                  <div
                     key={index}
-                    direction="up"
-                    delay={0.3 + index * 0.1}
+                    data-aos="fade-up"
+                    data-aos-delay={250 + index * 50}
                   >
                     <div className="relative pl-4 border-l-2 border-[var(--accent-primary)]/30 last:pb-0">
                       <div className="absolute left-[-5px] top-1 w-2 h-2 rounded-full bg-[var(--accent-primary)]"></div>
@@ -180,37 +174,39 @@ const About = () => {
                         </div>
                       )}
                     </div>
-                  </AnimationWrapper>
+                  </div>
                 ))}
               </div>
 
               {/* Resume Button */}
-              <AnimationWrapper direction="up" delay={0.6}>
-                <div className="mt-6 pt-6 border-t border-[var(--neutral-200)]/30">
-                  <a
-                    href={encodedResumeUrl}
-                    download="Muhammad_Sarmad_Javed_Resume.pdf"
-                    className="w-full px-6 py-3 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-white font-medium rounded-xl hover:shadow-lg hover:shadow-[var(--accent-primary)]/25 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center"
+              <div
+                className="mt-6 pt-6 border-t border-[var(--neutral-200)]/30"
+                data-aos="fade-up"
+                data-aos-delay="400"
+              >
+                <a
+                  href={encodedResumeUrl}
+                  download="Muhammad_Sarmad_Javed_Resume.pdf"
+                  className="w-full px-6 py-3 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-white font-medium rounded-xl hover:shadow-lg hover:shadow-[var(--accent-primary)]/25 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center"
+                >
+                  <svg
+                    className="w-4 h-4 mr-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
                   >
-                    <svg
-                      className="w-4 h-4 mr-2"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                      />
-                    </svg>
-                    Download Resume
-                  </a>
-                </div>
-              </AnimationWrapper>
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                    />
+                  </svg>
+                  Download Resume
+                </a>
+              </div>
             </div>
-          </AnimationWrapper>
+          </div>
         </div>
       </div>
     </section>
