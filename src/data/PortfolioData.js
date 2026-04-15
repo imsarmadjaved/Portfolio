@@ -118,6 +118,17 @@ export const portfolioData = {
             githubUrl: "https://github.com/imsarmadjaved/portfolio_react",
             featured: false
         },
+        {
+            id: 5,
+            title: "Job Portal",
+            description: "A Job Portal with role based access. Built in MERN stack.",
+            image: "/images",
+            technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "REST API"],
+            liveUrl: "https://job-portal-pmvm.vercel.app/",
+            githubUrl: "https://github.com/imsarmadjaved/Job-Portal",
+            featured: true
+        },
+
     ],
 
     experience: [
