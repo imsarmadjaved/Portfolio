@@ -128,7 +128,16 @@ export const portfolioData = {
             githubUrl: "https://github.com/imsarmadjaved/Job-Portal",
             featured: true
         },
-
+        {
+            id: 6,
+            title: "Resume RAG System",
+            description: "AI-Powered Resume Analysis & Recruitment Platform",
+            image: "/images",
+            technologies: ["Next.js", "Python", "FastAPI", "MongoDB", "Pinecone"],
+            liveUrl: "https://rag-system-wkm3.vercel.app/",
+            githubUrl: "https://github.com/imsarmadjaved/RAG_SYSTEM",
+            featured: true
+        },
     ],
 
     experience: [
