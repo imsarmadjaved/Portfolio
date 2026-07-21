@@ -11,48 +11,27 @@ import "aos/dist/aos.css";
 
 function App() {
   useEffect(() => {
-    // Initialize AOS
     AOS.init({
-      duration: 800,
+      duration: 600,
       once: true,
-      offset: 0, // Changed from 120 to 0
-      easing: "ease-in-out",
-      delay: 0, // Changed from 100 to 0
+      offset: 64,
+      easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+      delay: 0,
       mirror: false,
       anchorPlacement: "top-bottom",
-      disableMutationObserver: false,
+      disable: () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
     });
 
-    // Force immediate animation for elements already in viewport
-    setTimeout(() => {
-      AOS.refresh();
-    }, 50);
-
-    setTimeout(() => {
+    const refreshAos = () => {
       AOS.refreshHard();
-    }, 150);
+    };
+    const refreshTimer = window.setTimeout(AOS.refresh, 100);
+    window.addEventListener("load", refreshAos);
 
-    setTimeout(() => {
-      AOS.refresh();
-    }, 300);
-
-    // Manually trigger animations for hero section
-    const heroElements = document.querySelectorAll("#home [data-aos]");
-    heroElements.forEach((el) => {
-      el.classList.add("aos-animate");
-    });
-
-    // Refresh on window load
-    window.addEventListener("load", () => {
-      AOS.refreshHard();
-      const allElements = document.querySelectorAll("[data-aos]");
-      allElements.forEach((el) => {
-        const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight && rect.bottom > 0) {
-          el.classList.add("aos-animate");
-        }
-      });
-    });
+    return () => {
+      window.clearTimeout(refreshTimer);
+      window.removeEventListener("load", refreshAos);
+    };
   }, []);
 
   return (

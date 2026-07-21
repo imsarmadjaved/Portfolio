@@ -1,6 +1,7 @@
 // src/components/About.jsx
 import React from "react";
 import { portfolioData } from "../data/PortfolioData";
+import SectionHeading from "./ui/SectionHeading";
 
 const About = () => {
   const { about, personal, education } = portfolioData;
@@ -10,7 +11,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className="section relative overflow-hidden px-4 sm:px-6 lg:px-8"
+      className="portfolio-section about-section"
       style={{ backgroundColor: "#050505" }}
     >
       {/* Subtle background accents - matching Hero colors */}
@@ -18,27 +19,11 @@ const About = () => {
       <div className="absolute bottom-10 sm:bottom-20 left-10 sm:left-20 w-32 sm:w-48 lg:w-64 h-32 sm:h-48 lg:h-64 bg-[#00F0FF]/5 rounded-full blur-2xl sm:blur-3xl"></div>
 
       <div className="container-custom relative z-10 mx-auto">
-        {/* Section Header - Matching Skills style */}
-        <div className="text-center mb-12 sm:mb-16 px-4" data-aos="fade-up">
-          <span className="text-[#00F0FF] text-xs sm:text-sm font-medium uppercase tracking-wider mb-3 block">
-            Get to know me
-          </span>
-
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-white via-[#00F0FF] to-[#0047FF] bg-clip-text text-transparent">
-              About Me
-            </span>
-          </h2>
-
-          <div className="flex items-center justify-center gap-3">
-            <div className="w-10 h-px bg-gradient-to-r from-transparent to-[#00F0FF]"></div>
-            <p className="text-[#A1A1A1] text-sm sm:text-base max-w-xl">
-              Passionate developer focused on creating impactful digital
-              experiences
-            </p>
-            <div className="w-10 h-px bg-gradient-to-l from-transparent to-[#00F0FF]"></div>
-          </div>
-        </div>
+        <SectionHeading
+          eyebrow="Get to know me"
+          title="Engineering with intention"
+          description="I connect product thinking, clean implementation, and dependable delivery."
+        />
 
         <div className="grid lg:grid-cols-3 gap-6 sm:gap-8">
           {/* Left Column */}
@@ -71,41 +56,41 @@ const About = () => {
                 <span className="w-1 h-5 bg-[#00F0FF] rounded-full"></span>
                 Who I Am
               </h3>
-              <p className="text-sm sm:text-base text-[#A1A1A1] leading-relaxed">
+              <p className="text-base text-[#B3B3B3] leading-relaxed">
                 {about.summary}
               </p>
 
               {/* Quick Info Grid - Only Name, Location, Email */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-[#1A1A1A]">
                 <div>
-                  <span className="text-[10px] sm:text-xs text-[#6B6B6B] block mb-0.5 sm:mb-1">
+                  <span className="text-xs text-[#858585] block mb-1">
                     Name
                   </span>
                   <span
-                    className="text-xs sm:text-sm font-medium text-white break-words line-clamp-1"
+                    className="text-xs sm:text-sm font-medium text-white break-words"
                     title={personal.name}
                   >
                     {personal.name}
                   </span>
                 </div>
                 <div>
-                  <span className="text-[10px] sm:text-xs text-[#6B6B6B] block mb-0.5 sm:mb-1">
+                  <span className="text-xs text-[#858585] block mb-1">
                     Location
                   </span>
                   <span
-                    className="text-xs sm:text-sm font-medium text-white line-clamp-1"
+                    className="text-xs sm:text-sm font-medium text-white break-words"
                     title={personal.location}
                   >
                     {personal.location}
                   </span>
                 </div>
                 <div>
-                  <span className="text-[10px] sm:text-xs text-[#6B6B6B] block mb-0.5 sm:mb-1">
+                  <span className="text-xs text-[#858585] block mb-1">
                     Email
                   </span>
                   <a
                     href={`mailto:${personal.email}`}
-                    className="text-xs sm:text-sm font-medium text-[#00F0FF] hover:underline line-clamp-1 block truncate"
+                    className="text-xs sm:text-sm font-medium text-[#00F0FF] hover:underline break-all block"
                     title={personal.email}
                   >
                     {personal.email}
@@ -165,7 +150,7 @@ const About = () => {
               </h3>
 
               <div className="space-y-4 sm:space-y-6">
-                {education.map((edu, index) => (
+                {education.slice(0, 1).map((edu, index) => (
                   <div
                     key={index}
                     data-aos="fade-up"
@@ -197,7 +182,7 @@ const About = () => {
                           {edu.courses.slice(0, 2).map((course, idx) => (
                             <span
                               key={idx}
-                              className="text-[8px] sm:text-[10px] px-1.5 sm:px-2 py-0.5 bg-[#0F0F0F] text-[#A1A1A1] rounded-full truncate max-w-[120px] sm:max-w-none border border-[#1A1A1A]"
+                              className="text-xs px-2 py-1 bg-[#0F0F0F] text-[#A1A1A1] rounded-full truncate max-w-[160px] sm:max-w-none border border-[#1A1A1A]"
                               title={course}
                             >
                               {course.length > 15
@@ -206,7 +191,7 @@ const About = () => {
                             </span>
                           ))}
                           {edu.courses.length > 2 && (
-                            <span className="text-[8px] sm:text-[10px] px-1.5 sm:px-2 py-0.5 bg-[#0F0F0F] text-[#A1A1A1] rounded-full border border-[#1A1A1A]">
+                            <span className="text-xs px-2 py-1 bg-[#0F0F0F] text-[#A1A1A1] rounded-full border border-[#1A1A1A]">
                               +{edu.courses.length - 2}
                             </span>
                           )}
@@ -226,7 +211,7 @@ const About = () => {
                 <a
                   href={encodedResumeUrl}
                   download="Muhammad_Sarmad_Javed_Resume.pdf"
-                  className="group w-full px-4 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-[#0047FF] to-[#00F0FF] text-white font-medium text-sm sm:text-base rounded-lg sm:rounded-xl hover:shadow-lg hover:shadow-[#0047FF]/25 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center relative overflow-hidden"
+                  className="group w-full px-4 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-[#0047FF] to-[#00C4D4] text-white font-medium text-sm sm:text-base rounded-lg sm:rounded-xl hover:shadow-lg hover:shadow-[#0047FF]/25 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center relative overflow-hidden"
                 >
                   <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
 

@@ -7,7 +7,7 @@ export const portfolioData = {
         phone: "+92 328 7900729",
         location: "Lahore, Punjab, Pakistan",
         availability: "Open to opportunities",
-        resumeUrl: "/Muhammad_Sarmad_Javed_FG.pdf",
+        resumeUrl: "/resume/Muhammad_Sarmad_Javed_Resume.pdf",
         socialLinks: {
             github: "https://github.com/imsarmadjaved",
             linkedin: "https://linkedin.com/in/imsarmadjaved",
@@ -16,7 +16,7 @@ export const portfolioData = {
     },
 
     about: {
-        summary: "AI-driven Full Stack Developer specializing in MERN stack with a strong focus on AI-enhanced web applications. Combining robust backend architecture with intelligent features to build high-performance, scalable solutions. Proven ability to reduce load times while delivering clean, maintainable code that solves real business problems through api development, testing, and security focused implementation.",
+        summary: "AI-driven Full Stack Developer specializing in the MERN stack and AI-enhanced web applications. I combine reliable backend architecture with thoughtful interfaces to build scalable products, REST APIs, and maintainable solutions with a strong focus on testing, security, and performance.",
         highlights: [
             "MERN Stack Developer",
             "Experience with API Integration",
@@ -41,10 +41,7 @@ export const portfolioData = {
                 { name: 'LinkedIn', href: 'https://linkedin.com/in/imsarmadjaved', type: 'external', icon: 'linkedin' },
                 { name: 'Email', href: 'mailto:sarmadofficial.6@gmail.com', type: 'external', icon: 'email' }
             ],
-            legal: [
-                { name: 'Privacy', href: '#privacy', type: 'section' },
-                { name: 'Terms', href: '#terms', type: 'section' }
-            ]
+            legal: []
         }
     },
 
@@ -62,18 +59,22 @@ export const portfolioData = {
             { name: "Node.js", level: 80, icon: "🚀" },
             { name: "Express.js", level: 80, icon: "⚡" },
             { name: "RESTful APIs", level: 85, icon: "🔄" },
-            { name: "MVC Architecture", level: 75, icon: "🏗️" }
+            { name: "MVC Architecture", level: 75, icon: "🏗️" },
+            { name: "Python", level: 70, icon: "🐍" },
+            { name: "Java", level: 65, icon: "☕" },
+            { name: "JWT Authentication", level: 70, icon: "🔐" }
         ],
         databases: [
             { name: "MongoDB", level: 60, icon: "🍃" },
-            { name: "PostgreSQL", level: 70, icon: "🐬" }
+            { name: "PostgreSQL", level: 70, icon: "🐘" },
+            { name: "SQL / NoSQL", level: 70, icon: "◫" }
         ],
         tools: [
-            "VS Code", "GitHub", "Postman", "Microsoft Office", "Git", "Browser DevTools"
+            "VS Code", "GitHub", "Postman", "Git", "Cloudinary", "Vercel", "FastAPI", "ChatGPT"
         ],
         softSkills: [
             "Teamwork", "Communication", "Agile Collaboration",
-            "Problem Solving", "Troubleshooting", "Code Reviews"
+            "Troubleshooting", "Code Reviews", "Technical Writing"
         ]
     },
 
@@ -81,9 +82,9 @@ export const portfolioData = {
         {
             id: 1,
             title: "NexTrade",
-            description: "A local wholesale marketplace platform built with MERN stack. Enables seamless connection between wholesalers and retailers with real-time inventory management.",
-            image: "/assets/nextrade.png",
-            technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "REST API"],
+            description: "An AI-enhanced B2B marketplace connecting wholesalers and retailers, with scalable REST APIs, optimized media delivery, and intelligent product recommendations.",
+            image: "/images/projects/nextrade.png",
+            technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "Python", "Cloudinary"],
             liveUrl: "https://nextrade-frontend.vercel.app/",
             githubUrl: "https://github.com/imsarmadjaved/nextrade-frontend",
             featured: true
@@ -91,19 +92,19 @@ export const portfolioData = {
         {
             id: 2,
             title: "AI Recipe Generator",
-            description: "Ai based project showcasing integration of AI APIs with modern web applications. Generate recipes by using given ingredients.",
-            image: "/images/Ai-recipie.png",
-            technologies: ["React.js", "Tailwindcss"],
+            description: "An AI-based recipe generator that turns available ingredients into recipe ideas through a focused, responsive web experience.",
+            image: "/images/projects/ai-recipe.png",
+            technologies: ["React.js", "Tailwind CSS", "AI API"],
             liveUrl: "https://ai-recipe-generator-nine.vercel.app/",
             githubUrl: "https://github.com/imsarmadjaved/Ai-Recipe-Generator",
             featured: false
         },
         {
             id: 3,
-            title: "First Ecommerce Page",
-            description: "The very first Project using react and tailwind build by me.",
-            image: "/images",
-            technologies: ["React.js", "Tailwindcss"],
+            title: "First E-commerce Page",
+            description: "An early responsive e-commerce interface built to strengthen practical React and Tailwind CSS skills.",
+            image: null,
+            technologies: ["React.js", "Tailwind CSS"],
             liveUrl: "https://first-ecommerce-react-qy7u.vercel.app/",
             githubUrl: "https://github.com/imsarmadjaved/First--Ecommerce-React-",
             featured: false
@@ -111,9 +112,9 @@ export const portfolioData = {
         {
             id: 4,
             title: "React Portfolio",
-            description: "Porfolio built in react and tailwindcss with Dark and light Mode.",
-            image: "/images",
-            technologies: ["React.js", "Tailwindcss"],
+            description: "A portfolio interface built with React and Tailwind CSS, featuring dark and light presentation modes.",
+            image: null,
+            technologies: ["React.js", "Tailwind CSS"],
             liveUrl: "https://portfolio-react-ecru-two.vercel.app/",
             githubUrl: "https://github.com/imsarmadjaved/portfolio_react",
             featured: false
@@ -121,8 +122,8 @@ export const portfolioData = {
         {
             id: 5,
             title: "Job Portal",
-            description: "A Job Portal with role based access. Built in MERN stack.",
-            image: "/images",
+            description: "A MERN stack job portal with role-based access for managing opportunities and applications.",
+            image: null,
             technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "REST API"],
             liveUrl: "https://job-portal-pmvm.vercel.app/",
             githubUrl: "https://github.com/imsarmadjaved/Job-Portal",
@@ -130,10 +131,10 @@ export const portfolioData = {
         },
         {
             id: 6,
-            title: "Resume RAG System",
-            description: "AI-Powered Resume Analysis & Recruitment Platform",
-            image: "/images",
-            technologies: ["Next.js", "Python", "FastAPI", "MongoDB", "Pinecone"],
+            title: "RAG Resume System",
+            description: "An AI-powered recruitment platform for resume analysis, semantic search, skill matching, and structured candidate comparison.",
+            image: null,
+            technologies: ["Next.js", "Python", "FastAPI", "MongoDB", "Pinecone", "OpenAI"],
             liveUrl: "https://rag-system-wkm3.vercel.app/",
             githubUrl: "https://github.com/imsarmadjaved/RAG_SYSTEM",
             featured: true
@@ -144,16 +145,14 @@ export const portfolioData = {
         {
             company: "Amrood Labs",
             position: "MERN Stack Developer Intern",
-            duration: "02/2026 - Current",
-            location: "Lahore, Pakistan",
-            description: "Working on developing modern web applications using the MERN stack.",
+            duration: "Feb 2026 – Apr 2026",
+            location: "Lahore, Punjab, Pakistan",
+            description: "Developed and maintained responsive MERN applications, REST API integrations, and reliable cross-device experiences.",
             achievements: [
-                "Developed responsive web interfaces using React.js, HTML5, CSS3, and JavaScript, ensuring compatibility across modern browsers and devices",
-                "Translated UI requirements into reusable React components following clean code and modular design practices",
-                "Integrated front-end components with backend REST APIs using asynchronous JavaScript and modern data-fetching patterns",
-                "Implemented responsive layouts and mobile-friendly designs to improve usability across desktop and mobile platforms",
-                "Debugged front-end and API integration issues using browser developer tools and Postman",
-                "Assisted in the maintenance of existing applications, ensuring system reliability and performance"
+                "Engineered responsive MERN applications with a focus on performance and efficient implementation",
+                "Developed and integrated RESTful APIs with Node.js and Express.js to support reliable frontend–backend data flow",
+                "Tested cross-browser compatibility and mobile responsiveness while troubleshooting frontend and API issues",
+                "Collaborated on code reviews and technical discussions to improve maintainability and version-control practices"
             ]
         }
     ],
@@ -161,10 +160,10 @@ export const portfolioData = {
     education: [
         {
             degree: "Bachelor's in Computer Science",
-            institution: "University Of South Asia",
+            institution: "University of South Asia",
             location: "Lahore, Pakistan",
-            duration: "2022 - 2026",
-            grade: "CGPA: 3.83/4.0",
+            duration: "Apr 2022 – Jan 2026",
+            grade: "CGPA: 3.83 / 4.0",
             courses: [
                 "Web Design and Development",
                 "Database Management",
@@ -176,14 +175,14 @@ export const portfolioData = {
             degree: "Intermediate",
             institution: "Government Degree College Raiwind",
             location: "Raiwind, Pakistan",
-            duration: "2018 - 2020",
+            duration: "2018 – 2020",
             grade: ""
         },
         {
             degree: "Matriculation",
             institution: "Sir Syed Ahmad School",
-            location: "FarooqAbad, Lahore",
-            duration: "2016 - 2018",
+            location: "Farooqabad, Lahore",
+            duration: "2016 – 2018",
             grade: ""
         }
     ]

@@ -1,7 +1,7 @@
 // src/components/Contact.jsx
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { portfolioData } from "../data/PortfolioData";
-import emailjs from "@emailjs/browser";
+import SectionHeading from "./ui/SectionHeading";
 
 const Contact = () => {
   const { personal } = portfolioData;
@@ -12,6 +12,14 @@ const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const statusTimerRef = useRef(null);
+
+  useEffect(
+    () => () => {
+      window.clearTimeout(statusTimerRef.current);
+    },
+    [],
+  );
 
   const handleChange = (e) => {
     setFormData({
@@ -22,12 +30,15 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (isSubmitting) return;
     setIsSubmitting(true);
     setSubmitStatus(null);
 
-    const serviceId = "service_t0q7olf";
-    const templateId = "template_i7021os";
-    const publicKey = "ulpW-ueu3pDaeuZtC";
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || "service_t0q7olf";
+    const templateId =
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "template_i7021os";
+    const publicKey =
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "ulpW-ueu3pDaeuZtC";
 
     // Template parameters
     const templateParams = {
@@ -39,6 +50,7 @@ const Contact = () => {
     };
 
     try {
+      const { default: emailjs } = await import("@emailjs/browser");
       const result = await emailjs.send(
         serviceId,
         templateId,
@@ -46,15 +58,19 @@ const Contact = () => {
         publicKey,
       );
 
-      console.log("Email sent successfully!", result.text);
+      if (!result.text) throw new Error("Email provider returned no status");
       setSubmitStatus("success");
       setFormData({ user_name: "", user_email: "", message: "" });
     } catch (error) {
-      console.error("Failed to send email:", error.text);
+      console.error("Failed to send email:", error);
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
-      setTimeout(() => setSubmitStatus(null), 5000);
+      window.clearTimeout(statusTimerRef.current);
+      statusTimerRef.current = window.setTimeout(
+        () => setSubmitStatus(null),
+        8000,
+      );
     }
   };
 
@@ -133,35 +149,19 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="relative py-16 sm:py-20 lg:py-24 overflow-hidden"
+      className="portfolio-section contact-section"
       style={{ backgroundColor: "#050505" }}
     >
       {/* Background decorative elements */}
       <div className="absolute top-10 right-10 w-72 h-72 bg-[#00F0FF]/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-10 left-10 w-80 h-80 bg-[#0047FF]/5 rounded-full blur-3xl"></div>
 
-      <div className="container-custom relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-12 sm:mb-16" data-aos="fade-up">
-          <span className="text-[#00F0FF] text-xs sm:text-sm font-medium uppercase tracking-wider mb-3 block">
-            Get In Touch
-          </span>
-
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-white via-[#00F0FF] to-[#0047FF] bg-clip-text text-transparent">
-              Contact Me
-            </span>
-          </h2>
-
-          <div className="flex items-center justify-center gap-3">
-            <div className="w-10 h-px bg-gradient-to-r from-transparent to-[#00F0FF]"></div>
-            <p className="text-[#A1A1A1] text-sm sm:text-base max-w-xl">
-              Have a question or want to work together? I'd love to hear from
-              you.
-            </p>
-            <div className="w-10 h-px bg-gradient-to-l from-transparent to-[#00F0FF]"></div>
-          </div>
-        </div>
+      <div className="container-custom relative z-10">
+        <SectionHeading
+          eyebrow="Get in touch"
+          title="Let’s build something useful"
+          description="Have a role, project, or collaboration in mind? Share the context and I’ll get back to you."
+        />
 
         <div className="grid lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
           {/* Left Column - Contact Info */}
@@ -282,6 +282,7 @@ const Contact = () => {
             <form
               onSubmit={handleSubmit}
               className="bg-[#0A0A0A] rounded-2xl p-6 sm:p-8 border border-[#1A1A1A]"
+              aria-busy={isSubmitting}
             >
               <h3 className="text-xl font-semibold text-white mb-6 flex items-center gap-2">
                 <span className="w-1 h-5 bg-[#00F0FF] rounded-full"></span>
@@ -292,7 +293,7 @@ const Contact = () => {
                 <div>
                   <label
                     htmlFor="user_name"
-                    className="block text-xs font-medium text-[#6B6B6B] mb-2"
+                    className="block text-sm font-medium text-[#A1A1A1] mb-2"
                   >
                     Your Name
                   </label>
@@ -311,7 +312,7 @@ const Contact = () => {
                 <div>
                   <label
                     htmlFor="user_email"
-                    className="block text-xs font-medium text-[#6B6B6B] mb-2"
+                    className="block text-sm font-medium text-[#A1A1A1] mb-2"
                   >
                     Email Address
                   </label>
@@ -322,7 +323,7 @@ const Contact = () => {
                     value={formData.user_email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-[#0F0F0F] border border-[#1A1A1A] rounded-xl text-sm text-white placeholder-[#6B6B6B] focus:outline-none focus:border-[#0047FF] transition-all duration-300"
+                    className="w-full px-4 py-3 bg-[#0F0F0F] border border-[#1A1A1A] rounded-xl text-sm text-white placeholder-[#737373] focus:border-[#00F0FF] transition-all duration-300"
                     placeholder="john@example.com"
                   />
                 </div>
@@ -330,7 +331,7 @@ const Contact = () => {
                 <div>
                   <label
                     htmlFor="message"
-                    className="block text-xs font-medium text-[#6B6B6B] mb-2"
+                    className="block text-sm font-medium text-[#A1A1A1] mb-2"
                   >
                     Your Message
                   </label>
@@ -338,19 +339,24 @@ const Contact = () => {
                     id="message"
                     name="message"
                     rows="5"
+                    minLength="20"
+                    maxLength="2000"
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-[#0F0F0F] border border-[#1A1A1A] rounded-xl text-sm text-white placeholder-[#6B6B6B] focus:outline-none focus:border-[#A3FF00] transition-all duration-300 resize-none"
+                    className="w-full px-4 py-3 bg-[#0F0F0F] border border-[#1A1A1A] rounded-xl text-sm text-white placeholder-[#737373] focus:border-[#00F0FF] transition-all duration-300 resize-none"
                     placeholder="Tell me about your project or opportunity..."
                   ></textarea>
+                  <p className="mt-2 text-right text-xs text-[#858585]">
+                    {formData.message.length} / 2000
+                  </p>
                 </div>
 
                 <div>
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className={`w-full px-6 py-3.5 bg-gradient-to-r from-[#0047FF] to-[#00F0FF] text-white text-sm font-medium rounded-xl transition-all duration-300 ${
+                    className={`w-full px-6 py-3.5 bg-gradient-to-r from-[#0047FF] to-[#006B8E] text-white text-sm font-medium rounded-xl transition-all duration-300 ${
                       isSubmitting
                         ? "opacity-70 cursor-not-allowed"
                         : "hover:shadow-lg hover:shadow-[#0047FF]/25 hover:-translate-y-0.5"
@@ -402,7 +408,11 @@ const Contact = () => {
 
                 {/* Status Messages */}
                 {submitStatus === "success" && (
-                  <div className="mt-4 p-4 bg-[#A3FF00]/10 border border-[#A3FF00]/30 rounded-xl">
+                  <div
+                    className="mt-4 p-4 bg-[#A3FF00]/10 border border-[#A3FF00]/30 rounded-xl"
+                    role="status"
+                    aria-live="polite"
+                  >
                     <p className="text-[#A3FF00] text-sm text-center flex items-center justify-center gap-2">
                       <svg
                         className="w-4 h-4"
@@ -423,7 +433,10 @@ const Contact = () => {
                 )}
 
                 {submitStatus === "error" && (
-                  <div className="mt-4 p-4 bg-[#FF0055]/10 border border-[#FF0055]/30 rounded-xl">
+                  <div
+                    className="mt-4 p-4 bg-[#FF0055]/10 border border-[#FF0055]/30 rounded-xl"
+                    role="alert"
+                  >
                     <p className="text-[#FF0055] text-sm text-center flex items-center justify-center gap-2">
                       <svg
                         className="w-4 h-4"
@@ -438,8 +451,11 @@ const Contact = () => {
                           d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
                         />
                       </svg>
-                      Failed to send message. Please try again or email me
-                      directly.
+                      Failed to send. Please try again or{" "}
+                      <a href={`mailto:${personal.email}`} className="underline">
+                        email me directly
+                      </a>
+                      .
                     </p>
                   </div>
                 )}

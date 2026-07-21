@@ -74,10 +74,10 @@ const Footer = () => {
   // Social links with colors
   const socialLinks = [
     {
-      ...personal.socialLinks,
-      github: personal.socialLinks?.github,
+      href: personal.socialLinks?.github,
       color: "#A3FF00",
       icon: "github",
+      name: "GitHub",
     },
     {
       href: personal.socialLinks?.linkedin,
@@ -115,8 +115,10 @@ const Footer = () => {
                 aria-label="Go to home"
               >
                 <img
-                  src="./Logo.png"
-                  alt="Logo"
+                  src="/logo.png"
+                  alt=""
+                  width="202"
+                  height="158"
                   className="h-8 sm:h-10 md:h-12 w-auto object-contain"
                 />
               </a>
@@ -189,26 +191,6 @@ const Footer = () => {
               </ul>
             </div>
 
-            {/* Legal */}
-            <div className="sm:col-span-2 lg:col-span-2">
-              <h3 className="text-xs sm:text-sm font-semibold text-white uppercase tracking-wider mb-4 flex items-center gap-2">
-                <span className="w-1 h-4 bg-[#A3FF00] rounded-full"></span>
-                Legal
-              </h3>
-              <ul className="space-y-3">
-                {footer.links.legal.map((link) => (
-                  <li key={link.name}>
-                    <a
-                      href={link.href}
-                      onClick={(e) => handleLinkClick(link, e)}
-                      className="text-xs sm:text-sm text-[#A1A1A1] hover:text-[#A3FF00] transition-colors duration-300 inline-block"
-                    >
-                      {link.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
           </div>
 
           {/* Bottom Bar */}
@@ -218,58 +200,15 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Back to top button - mobile */}
-          <div className="mt-6 text-center sm:hidden">
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              }}
-              className="inline-flex items-center gap-2 px-4 py-2 text-xs text-[#00F0FF] bg-[#0A0A0A] rounded-full border border-[#1A1A1A] hover:border-[#00F0FF]/40 transition-all duration-300"
-              aria-label="Back to top"
-            >
-              <svg
-                className="w-3 h-3"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M5 10l7-7m0 0l7 7m-7-7v18"
-                />
-              </svg>
-              <span>Back to top</span>
-            </button>
-          </div>
-
-          {/* Desktop back to top button */}
-          <div className="hidden sm:block absolute bottom-8 right-8">
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              }}
-              className="w-10 h-10 rounded-lg bg-[#0A0A0A] border border-[#1A1A1A] flex items-center justify-center text-[#6B6B6B] hover:text-[#00F0FF] hover:border-[#00F0FF]/40 transition-all duration-300"
-              aria-label="Back to top"
-            >
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M5 10l7-7m0 0l7 7m-7-7v18"
-                />
-              </svg>
-            </button>
-          </div>
+          <button
+            type="button"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="footer-back-to-top"
+            aria-label="Back to top"
+          >
+            <span aria-hidden="true">↑</span>
+            <span>Back to top</span>
+          </button>
         </div>
       </div>
     </footer>

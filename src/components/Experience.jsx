@@ -1,6 +1,7 @@
 // src/components/Experience.jsx
 import React from "react";
 import { portfolioData } from "../data/PortfolioData";
+import SectionHeading from "./ui/SectionHeading";
 
 const Experience = () => {
   const { experience, education } = portfolioData;
@@ -8,34 +9,19 @@ const Experience = () => {
   return (
     <section
       id="experience"
-      className="relative py-16 sm:py-20 lg:py-24 overflow-hidden"
+      className="portfolio-section experience-section"
       style={{ backgroundColor: "#050505" }}
     >
       {/* Background decorative elements */}
       <div className="absolute top-10 right-10 w-72 h-72 bg-[#00F0FF]/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-10 left-10 w-80 h-80 bg-[#0047FF]/5 rounded-full blur-3xl"></div>
 
-      <div className="container-custom relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-12 sm:mb-16" data-aos="fade-up">
-          <span className="text-[#00F0FF] text-xs sm:text-sm font-medium uppercase tracking-wider mb-3 block">
-            My Journey
-          </span>
-
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-white via-[#00F0FF] to-[#0047FF] bg-clip-text text-transparent">
-              Experience & Education
-            </span>
-          </h2>
-
-          <div className="flex items-center justify-center gap-3">
-            <div className="w-10 h-px bg-gradient-to-r from-transparent to-[#00F0FF]"></div>
-            <p className="text-[#A1A1A1] text-sm sm:text-base max-w-xl">
-              My professional journey and academic background
-            </p>
-            <div className="w-10 h-px bg-gradient-to-l from-transparent to-[#00F0FF]"></div>
-          </div>
-        </div>
+      <div className="container-custom relative z-10">
+        <SectionHeading
+          eyebrow="My journey"
+          title="Experience & Education"
+          description="Hands-on product work supported by a strong computer science foundation."
+        />
 
         <div className="grid lg:grid-cols-2 gap-6 sm:gap-8">
           {/* Experience Column */}
