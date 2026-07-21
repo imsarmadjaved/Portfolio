@@ -16,7 +16,7 @@ export const portfolioData = {
     },
 
     about: {
-        summary: "Full Stack Developer with hands-on experience developing modern web applications using React.js, Node.js, Express.js, MongoDB, JavaScript, HTML, CSS, and Next.js. Experienced in building responsive user interfaces, translating UI designs into functional components, and integrating REST APIs with front-end applications. Strong understanding of responsive web design, cross-browser compatibility, and performance optimization. Comfortable working in collaborative development environments using version control systems like Git/GitHub workflows, code reviews, and Agile practices. Passionate about writing clean, maintainable code, debugging complex issues, and improving user experience and interface performance.",
+        summary: "AI-driven Full Stack Developer specializing in MERN stack with a strong focus on AI-enhanced web applications. Combining robust backend architecture with intelligent features to build high-performance, scalable solutions. Proven ability to reduce load times while delivering clean, maintainable code that solves real business problems through api development, testing, and security focused implementation.",
         highlights: [
             "MERN Stack Developer",
             "Experience with API Integration",
