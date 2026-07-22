@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 94" fill="none" role="img" aria-label="MSJ">
+  <defs>
+    <linearGradient id="msj" x1="8" y1="86" x2="112" y2="8" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7A9EB5"/>
+      <stop offset="0.55" stop-color="#8FAAB8"/>
+      <stop offset="1" stop-color="#9BB8C9"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#msj)" d="M14 78V22c0-4.4 2.4-6.6 6.2-6.6 2.2 0 4.1.9 6.4 3.4L48 44.2 69.4 18.8c2.3-2.5 4.2-3.4 6.4-3.4 3.8 0 6.2 2.2 6.2 6.6v32.8c4.6-6.8 10.4-10.4 17.6-10.4 9.8 0 16.4 6.6 16.4 17.4v16.2c0 4.4-2.4 6.6-6.4 6.6s-6.4-2.2-6.4-6.6V61.8c0-5.2-2.6-8-7.2-8-5.4 0-10.2 3.8-13.2 10.8v13.4c0 4.4-2.4 6.6-6.4 6.6s-6.4-2.2-6.4-6.6V32.4L54.6 54.6c-1.4 1.6-2.8 2.4-4.6 2.4-1.8 0-3.2-.8-4.6-2.4L26.8 32.4v45.6c0 4.4-2.4 6.6-6.4 6.6S14 82.4 14 78z"/>
+</svg>
