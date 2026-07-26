@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { portfolioData } from "../data/PortfolioData";
+import LogoMark from "./ui/LogoMark";
 
 const Navbar = () => {
   const { personal, footer } = portfolioData;
@@ -87,7 +88,7 @@ const Navbar = () => {
         aria-label="Primary navigation"
       >
         <a href="#home" className="portfolio-nav__brand" aria-label="Go to home">
-          <img src="/logo.png" alt="" width="202" height="158" />
+          <LogoMark />
         </a>
 
         <div className="portfolio-nav__links">

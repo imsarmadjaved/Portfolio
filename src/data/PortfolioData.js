@@ -70,11 +70,22 @@ export const portfolioData = {
             { name: "SQL / NoSQL", level: 70, icon: "◫" }
         ],
         tools: [
-            "VS Code", "GitHub", "Postman", "Git", "Cloudinary", "Vercel", "FastAPI", "ChatGPT"
+            { name: "VS Code", level: 90 },
+            { name: "GitHub", level: 85 },
+            { name: "Postman", level: 80 },
+            { name: "Git", level: 85 },
+            { name: "Cloudinary", level: 70 },
+            { name: "Vercel", level: 75 },
+            { name: "FastAPI", level: 65 },
+            { name: "ChatGPT", level: 80 }
         ],
         softSkills: [
-            "Teamwork", "Communication", "Agile Collaboration",
-            "Troubleshooting", "Code Reviews", "Technical Writing"
+            { name: "Teamwork", level: 85 },
+            { name: "Communication", level: 80 },
+            { name: "Agile Collaboration", level: 75 },
+            { name: "Troubleshooting", level: 85 },
+            { name: "Code Reviews", level: 75 },
+            { name: "Technical Writing", level: 70 }
         ]
     },
 

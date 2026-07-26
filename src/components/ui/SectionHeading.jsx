@@ -8,7 +8,7 @@ import {
 
 const SectionHeading = ({ eyebrow, title, description, align = "center" }) => {
   const reducedMotion = useReducedMotion();
-  const container = getVariants(staggerContainer(0.1, 0.05), reducedMotion);
+  const container = getVariants(staggerContainer(0.09, 0.06), reducedMotion);
   const item = getVariants(staggerItem, reducedMotion);
 
   return (

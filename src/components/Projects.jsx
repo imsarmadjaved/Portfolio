@@ -35,7 +35,7 @@ const Projects = () => {
           role="group"
           aria-label="Filter projects"
           data-aos="fade-up"
-          data-aos-delay="60"
+          data-aos-delay="80"
         >
           {filters.map((item) => (
             <button
@@ -135,7 +135,7 @@ const Projects = () => {
           </div>
         )}
 
-        <div className="section-cta" data-aos="fade-up">
+        <div className="section-cta" data-aos="fade-up" data-aos-delay="100">
           <a
             href={personal.socialLinks.github}
             target="_blank"

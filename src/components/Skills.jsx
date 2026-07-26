@@ -1,5 +1,7 @@
 import { useMemo, useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
 import { portfolioData } from "../data/PortfolioData";
+import useReducedMotion from "../hooks/useReducedMotion";
 import SectionHeading from "./ui/SectionHeading";
 
 const categories = [
@@ -12,11 +14,51 @@ const categories = [
 
 const normalizeSkills = (skills, category) =>
   (skills[category] || []).map((skill) =>
-    typeof skill === "string" ? { name: skill } : skill,
+    typeof skill === "string" ? { name: skill, level: 70 } : skill,
   );
+
+/** Progress fill observes the track — not itself — so scaleX:0 never blocks IntersectionObserver. */
+const SkillProgress = ({ name, level, reducedMotion, delay = 0 }) => {
+  const trackRef = useRef(null);
+  const inView = useInView(trackRef, {
+    once: true,
+    amount: 0.4,
+    margin: "0px 0px -8% 0px",
+  });
+  const progress = Math.max(0, Math.min(100, level)) / 100;
+  const showFill = reducedMotion || inView;
+
+  return (
+    <div
+      ref={trackRef}
+      className="skill-card__track"
+      role="progressbar"
+      aria-valuenow={level}
+      aria-valuemin={0}
+      aria-valuemax={100}
+      aria-label={`${name} proficiency`}
+    >
+      <motion.span
+        className="skill-card__fill"
+        initial={false}
+        animate={{ scaleX: showFill ? progress : 0 }}
+        transition={
+          reducedMotion
+            ? { duration: 0 }
+            : {
+                duration: 0.9,
+                delay,
+                ease: [0.22, 1, 0.36, 1],
+              }
+        }
+      />
+    </div>
+  );
+};
 
 const Skills = () => {
   const { skills } = portfolioData;
+  const reducedMotion = useReducedMotion();
   const [activeCategory, setActiveCategory] = useState("frontend");
   const tabsRef = useRef([]);
   const currentSkills = useMemo(
@@ -52,7 +94,7 @@ const Skills = () => {
           role="tablist"
           aria-label="Skill categories"
           data-aos="fade-up"
-          data-aos-delay="60"
+          data-aos-delay="80"
         >
           {categories.map((category, index) => {
             const isActive = activeCategory === category.id;
@@ -85,19 +127,30 @@ const Skills = () => {
           aria-labelledby={`skills-tab-${activeCategory}`}
           key={activeCategory}
         >
-          {currentSkills.map((skill, index) => (
-            <article
-              key={skill.name}
-              className="skill-card"
-              style={{ "--item-index": index }}
-            >
-              <span className="skill-card__index">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <h3>{skill.name}</h3>
-              <span className="skill-card__status">Applied in practice</span>
-            </article>
-          ))}
+          {currentSkills.map((skill, index) => {
+            const level = Math.max(0, Math.min(100, skill.level ?? 70));
+            return (
+              <article
+                key={skill.name}
+                className="skill-card"
+                style={{ "--item-index": index }}
+              >
+                <span className="skill-card__index">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <div className="skill-card__main">
+                  <h3>{skill.name}</h3>
+                  <SkillProgress
+                    name={skill.name}
+                    level={level}
+                    reducedMotion={reducedMotion}
+                    delay={Math.min(index * 0.05, 0.25)}
+                  />
+                </div>
+                <span className="skill-card__status">{level}%</span>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>

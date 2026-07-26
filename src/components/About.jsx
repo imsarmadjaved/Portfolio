@@ -9,14 +9,10 @@ const About = () => {
   const encodedResumeUrl = encodeURI(personal.resumeUrl);
 
   return (
-    <section
-      id="about"
-      className="portfolio-section about-section"
-      style={{ backgroundColor: "#050505" }}
-    >
+    <section id="about" className="portfolio-section about-section">
       {/* Subtle background accents - matching Hero colors */}
-      <div className="absolute top-10 sm:top-20 right-10 sm:right-20 w-32 sm:w-48 lg:w-64 h-32 sm:h-48 lg:h-64 bg-[#0047FF]/5 rounded-full blur-2xl sm:blur-3xl"></div>
-      <div className="absolute bottom-10 sm:bottom-20 left-10 sm:left-20 w-32 sm:w-48 lg:w-64 h-32 sm:h-48 lg:h-64 bg-[#00F0FF]/5 rounded-full blur-2xl sm:blur-3xl"></div>
+      <div className="absolute top-10 sm:top-20 right-10 sm:right-20 w-32 sm:w-48 lg:w-64 h-32 sm:h-48 lg:h-64 bg-[#4C8DEB]/5 rounded-full blur-2xl sm:blur-3xl"></div>
+      <div className="absolute bottom-10 sm:bottom-20 left-10 sm:left-20 w-32 sm:w-48 lg:w-64 h-32 sm:h-48 lg:h-64 bg-[#5EB5C4]/5 rounded-full blur-2xl sm:blur-3xl"></div>
 
       <div className="container-custom relative z-10 mx-auto">
         <SectionHeading
@@ -30,7 +26,7 @@ const About = () => {
           <div className="lg:col-span-2 space-y-4 sm:space-y-6">
             {/* Who I Am Card */}
             <div
-              className="relative bg-[#0A0A0A] rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-[#1A1A1A] hover:border-[#00F0FF]/30 transition-all duration-300"
+              className="relative bg-[#11141B] rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-[#242A36] hover:border-[#5EB5C4]/30 transition-all duration-300"
               data-aos="fade-up"
               data-aos-delay="0"
             >
@@ -38,32 +34,32 @@ const About = () => {
               <div className="absolute -top-4 left-6 sm:left-8">
                 <span
                   className="inline-flex items-center gap-2 px-4 py-1.5 text-xs font-medium rounded-full
-                  bg-gradient-to-r from-[#A3FF00]/20 to-[#00F0FF]/20 
+                  bg-gradient-to-r from-[#7DB88A]/20 to-[#5EB5C4]/20 
                   backdrop-blur-sm
-                  border border-[#A3FF00]/40
-                  text-[#A3FF00]
+                  border border-[#7DB88A]/40
+                  text-[#7DB88A]
                   shadow-[0_0_15px_rgba(163,255,0,0.15)]"
                 >
                   <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#A3FF00] opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-[#A3FF00]"></span>
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#7DB88A] opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-[#7DB88A]"></span>
                   </span>
                   {personal.availability}
                 </span>
               </div>
 
               <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-white flex items-center gap-2 mt-2">
-                <span className="w-1 h-5 bg-[#00F0FF] rounded-full"></span>
+                <span className="w-1 h-5 bg-[#5EB5C4] rounded-full"></span>
                 Who I Am
               </h3>
-              <p className="text-base text-[#B3B3B3] leading-relaxed">
+              <p className="text-base text-[#9AA3B2] leading-relaxed">
                 {about.summary}
               </p>
 
               {/* Quick Info Grid - Only Name, Location, Email */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-[#1A1A1A]">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-[#242A36]">
                 <div>
-                  <span className="text-xs text-[#858585] block mb-1">
+                  <span className="text-xs text-[#6E7787] block mb-1">
                     Name
                   </span>
                   <span
@@ -74,7 +70,7 @@ const About = () => {
                   </span>
                 </div>
                 <div>
-                  <span className="text-xs text-[#858585] block mb-1">
+                  <span className="text-xs text-[#6E7787] block mb-1">
                     Location
                   </span>
                   <span
@@ -85,12 +81,12 @@ const About = () => {
                   </span>
                 </div>
                 <div>
-                  <span className="text-xs text-[#858585] block mb-1">
+                  <span className="text-xs text-[#6E7787] block mb-1">
                     Email
                   </span>
                   <a
                     href={`mailto:${personal.email}`}
-                    className="text-xs sm:text-sm font-medium text-[#00F0FF] hover:underline break-all block"
+                    className="text-xs sm:text-sm font-medium text-[#5EB5C4] hover:underline break-all block"
                     title={personal.email}
                   >
                     {personal.email}
@@ -105,11 +101,11 @@ const About = () => {
                 <div
                   key={index}
                   data-aos="fade-up"
-                  data-aos-delay={index * 100}
+                  data-aos-delay={index * 80}
                 >
-                  <div className="bg-[#0A0A0A] rounded-xl sm:rounded-2xl p-3 sm:p-4 flex items-center gap-2 sm:gap-3 border border-[#1A1A1A] hover:border-[#0047FF]/30 transition-all duration-300 hover:-translate-y-1">
-                    <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-lg bg-[#0047FF]/10 flex items-center justify-center flex-shrink-0">
-                      <span className="text-xs sm:text-sm text-[#0047FF] font-semibold">
+                  <div className="bg-[#11141B] rounded-xl sm:rounded-2xl p-3 sm:p-4 flex items-center gap-2 sm:gap-3 border border-[#242A36] hover:border-[#4C8DEB]/30 transition-all duration-300 hover:-translate-y-1">
+                    <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-lg bg-[#4C8DEB]/10 flex items-center justify-center flex-shrink-0">
+                      <span className="text-xs sm:text-sm text-[#4C8DEB] font-semibold">
                         {index + 1}
                       </span>
                     </div>
@@ -126,13 +122,13 @@ const About = () => {
           <div
             className="lg:col-span-1"
             data-aos="fade-up"
-            data-aos-delay="200"
+            data-aos-delay="160"
           >
             {/* Education Card */}
-            <div className="lg:sticky lg:top-24 bg-[#0A0A0A] rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-[#1A1A1A] hover:border-[#0047FF]/30 transition-all duration-300">
+            <div className="lg:sticky lg:top-24 bg-[#11141B] rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-[#242A36] hover:border-[#4C8DEB]/30 transition-all duration-300">
               <h3 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6 text-white flex items-center gap-2">
                 <svg
-                  className="w-4 h-4 sm:w-5 sm:h-5 text-[#0047FF]"
+                  className="w-4 h-4 sm:w-5 sm:h-5 text-[#4C8DEB]"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -151,27 +147,23 @@ const About = () => {
 
               <div className="space-y-4 sm:space-y-6">
                 {education.slice(0, 1).map((edu, index) => (
-                  <div
-                    key={index}
-                    data-aos="fade-up"
-                    data-aos-delay={300 + index * 100}
-                  >
-                    <div className="relative pl-3 sm:pl-4 border-l-2 border-[#0047FF]/30">
-                      <div className="absolute left-[-5px] top-1 w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#0047FF]"></div>
+                  <div key={index}>
+                    <div className="relative pl-3 sm:pl-4 border-l-2 border-[#4C8DEB]/30">
+                      <div className="absolute left-[-5px] top-1 w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#4C8DEB]"></div>
                       <div className="mb-1">
                         <h4 className="font-semibold text-white text-sm sm:text-base break-words pr-2">
                           {edu.degree}
                         </h4>
-                        <p className="text-[#00F0FF] text-xs sm:text-sm font-medium break-words">
+                        <p className="text-[#5EB5C4] text-xs sm:text-sm font-medium break-words">
                           {edu.institution}
                         </p>
                       </div>
-                      <div className="flex flex-wrap items-center gap-1 sm:gap-2 text-[10px] sm:text-xs text-[#6B6B6B] mb-1 sm:mb-2">
+                      <div className="flex flex-wrap items-center gap-1 sm:gap-2 text-[10px] sm:text-xs text-[#6E7787] mb-1 sm:mb-2">
                         <span>{edu.duration}</span>
                         {edu.grade && (
                           <>
                             <span className="hidden sm:inline">•</span>
-                            <span className="text-[#A3FF00] w-full sm:w-auto">
+                            <span className="text-[#7DB88A] w-full sm:w-auto">
                               {edu.grade}
                             </span>
                           </>
@@ -182,7 +174,7 @@ const About = () => {
                           {edu.courses.slice(0, 2).map((course, idx) => (
                             <span
                               key={idx}
-                              className="text-xs px-2 py-1 bg-[#0F0F0F] text-[#A1A1A1] rounded-full truncate max-w-[160px] sm:max-w-none border border-[#1A1A1A]"
+                              className="text-xs px-2 py-1 bg-[#171B24] text-[#9AA3B2] rounded-full truncate max-w-[160px] sm:max-w-none border border-[#242A36]"
                               title={course}
                             >
                               {course.length > 15
@@ -191,7 +183,7 @@ const About = () => {
                             </span>
                           ))}
                           {edu.courses.length > 2 && (
-                            <span className="text-xs px-2 py-1 bg-[#0F0F0F] text-[#A1A1A1] rounded-full border border-[#1A1A1A]">
+                            <span className="text-xs px-2 py-1 bg-[#171B24] text-[#9AA3B2] rounded-full border border-[#242A36]">
                               +{edu.courses.length - 2}
                             </span>
                           )}
@@ -203,15 +195,11 @@ const About = () => {
               </div>
 
               {/* Resume Button */}
-              <div
-                className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-[#1A1A1A]"
-                data-aos="fade-up"
-                data-aos-delay="500"
-              >
+              <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-[#242A36]">
                 <a
                   href={encodedResumeUrl}
                   download="Muhammad_Sarmad_Javed_Resume.pdf"
-                  className="group w-full px-4 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-[#0047FF] to-[#00C4D4] text-white font-medium text-sm sm:text-base rounded-lg sm:rounded-xl hover:shadow-lg hover:shadow-[#0047FF]/25 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center relative overflow-hidden"
+                  className="group w-full px-4 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-[#4C8DEB] to-[#4A9EAD] text-white font-medium text-sm sm:text-base rounded-lg sm:rounded-xl hover:shadow-lg hover:shadow-[#4C8DEB]/25 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center relative overflow-hidden"
                 >
                   <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
 

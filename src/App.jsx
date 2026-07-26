@@ -12,14 +12,15 @@ import "aos/dist/aos.css";
 function App() {
   useEffect(() => {
     AOS.init({
-      duration: 600,
+      duration: 780,
       once: true,
-      offset: 64,
+      offset: 72,
       easing: "cubic-bezier(0.22, 1, 0.36, 1)",
       delay: 0,
       mirror: false,
       anchorPlacement: "top-bottom",
-      disable: () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+      disable: () =>
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches,
     });
 
     const refreshAos = () => {

@@ -1,6 +1,7 @@
 // src/components/Footer.jsx
 import React from "react";
 import { portfolioData } from "../data/PortfolioData";
+import LogoMark from "./ui/LogoMark";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -75,19 +76,19 @@ const Footer = () => {
   const socialLinks = [
     {
       href: personal.socialLinks?.github,
-      color: "#A3FF00",
+      color: "#7DB88A",
       icon: "github",
       name: "GitHub",
     },
     {
       href: personal.socialLinks?.linkedin,
-      color: "#00F0FF",
+      color: "#5EB5C4",
       icon: "linkedin",
       name: "LinkedIn",
     },
     {
       href: `mailto:${personal.email}`,
-      color: "#FF5E00",
+      color: "#4C8DEB",
       icon: "email",
       name: "Email",
     },
@@ -95,12 +96,12 @@ const Footer = () => {
 
   return (
     <footer
-      className="relative border-t border-[#1A1A1A]"
-      style={{ backgroundColor: "#050505" }}
+      className="relative border-t border-[#242A36]"
+      style={{ backgroundColor: "#0A0C10" }}
     >
       {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-64 h-64 bg-[#0047FF]/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#00F0FF]/5 rounded-full blur-3xl"></div>
+      <div className="absolute top-0 right-0 w-64 h-64 bg-[#4C8DEB]/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#5EB5C4]/5 rounded-full blur-3xl"></div>
 
       <div className="container-custom relative z-10 px-4 sm:px-6 lg:px-8 mx-auto">
         {/* Main Footer Content */}
@@ -114,15 +115,9 @@ const Footer = () => {
                 className="inline-block mb-4 hover:opacity-80 transition-opacity duration-300"
                 aria-label="Go to home"
               >
-                <img
-                  src="/logo.png"
-                  alt=""
-                  width="202"
-                  height="158"
-                  className="h-8 sm:h-10 md:h-12 w-auto object-contain"
-                />
+                <LogoMark className="logo-mark--footer" />
               </a>
-              <p className="text-xs sm:text-sm text-[#A1A1A1] leading-relaxed mb-6 max-w-sm">
+              <p className="text-xs sm:text-sm text-[#9AA3B2] leading-relaxed mb-6 max-w-sm">
                 {footer.brandDescription}
               </p>
               <div className="flex flex-wrap gap-3">
@@ -132,7 +127,7 @@ const Footer = () => {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-lg bg-[#0A0A0A] border border-[#1A1A1A] flex items-center justify-center text-[#6B6B6B] hover:scale-110 transition-all duration-300"
+                    className="w-10 h-10 rounded-lg bg-[#11141B] border border-[#242A36] flex items-center justify-center text-[#6E7787] hover:scale-110 transition-all duration-300"
                     style={{
                       color: link.color,
                       borderColor: `${link.color}30`,
@@ -148,7 +143,7 @@ const Footer = () => {
             {/* Quick Links */}
             <div className="sm:col-span-1 lg:col-span-2 lg:col-start-7">
               <h3 className="text-xs sm:text-sm font-semibold text-white uppercase tracking-wider mb-4 flex items-center gap-2">
-                <span className="w-1 h-4 bg-[#00F0FF] rounded-full"></span>
+                <span className="w-1 h-4 bg-[#5EB5C4] rounded-full"></span>
                 Quick Links
               </h3>
               <ul className="space-y-3">
@@ -157,7 +152,7 @@ const Footer = () => {
                     <a
                       href={`#${link.href}`}
                       onClick={(e) => handleLinkClick(link, e)}
-                      className="text-xs sm:text-sm text-[#A1A1A1] hover:text-[#00F0FF] transition-colors duration-300 inline-block"
+                      className="text-xs sm:text-sm text-[#9AA3B2] hover:text-[#5EB5C4] transition-colors duration-300 inline-block"
                     >
                       {link.name}
                     </a>
@@ -169,7 +164,7 @@ const Footer = () => {
             {/* Connect */}
             <div className="sm:col-span-1 lg:col-span-2">
               <h3 className="text-xs sm:text-sm font-semibold text-white uppercase tracking-wider mb-4 flex items-center gap-2">
-                <span className="w-1 h-4 bg-[#0047FF] rounded-full"></span>
+                <span className="w-1 h-4 bg-[#4C8DEB] rounded-full"></span>
                 Connect
               </h3>
               <ul className="space-y-3">
@@ -179,7 +174,7 @@ const Footer = () => {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-xs sm:text-sm text-[#A1A1A1] hover:text-[#0047FF] transition-colors duration-300 inline-flex items-center gap-2"
+                      className="text-xs sm:text-sm text-[#9AA3B2] hover:text-[#4C8DEB] transition-colors duration-300 inline-flex items-center gap-2"
                     >
                       <span className="w-4 h-4 flex-shrink-0">
                         {getIcon(link.icon)}
@@ -194,8 +189,8 @@ const Footer = () => {
           </div>
 
           {/* Bottom Bar */}
-          <div className="mt-8 sm:mt-10 md:mt-12 pt-6 sm:pt-8 border-t border-[#1A1A1A] flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4">
-            <p className="text-xs sm:text-sm text-[#6B6B6B] text-center sm:text-left">
+          <div className="mt-8 sm:mt-10 md:mt-12 pt-6 sm:pt-8 border-t border-[#242A36] flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4">
+            <p className="text-xs sm:text-sm text-[#6E7787] text-center sm:text-left">
               © {currentYear} {personal.name}. All rights reserved.
             </p>
           </div>

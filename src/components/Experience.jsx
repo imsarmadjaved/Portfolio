@@ -7,14 +7,10 @@ const Experience = () => {
   const { experience, education } = portfolioData;
 
   return (
-    <section
-      id="experience"
-      className="portfolio-section experience-section"
-      style={{ backgroundColor: "#050505" }}
-    >
+    <section id="experience" className="portfolio-section experience-section">
       {/* Background decorative elements */}
-      <div className="absolute top-10 right-10 w-72 h-72 bg-[#00F0FF]/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-10 left-10 w-80 h-80 bg-[#0047FF]/5 rounded-full blur-3xl"></div>
+      <div className="absolute top-10 right-10 w-72 h-72 bg-[#5EB5C4]/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-10 left-10 w-80 h-80 bg-[#4C8DEB]/5 rounded-full blur-3xl"></div>
 
       <div className="container-custom relative z-10">
         <SectionHeading
@@ -25,11 +21,15 @@ const Experience = () => {
 
         <div className="grid lg:grid-cols-2 gap-6 sm:gap-8">
           {/* Experience Column */}
-          <div data-aos="fade-up" data-aos-delay="0">
-            <div className="flex items-center gap-3 mb-6 sm:mb-8">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-[#0047FF]/10 flex items-center justify-center flex-shrink-0">
+          <div>
+            <div
+              className="flex items-center gap-3 mb-6 sm:mb-8"
+              data-aos="fade-up"
+              data-aos-delay="0"
+            >
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-[#4C8DEB]/10 flex items-center justify-center flex-shrink-0">
                 <svg
-                  className="w-5 h-5 sm:w-6 sm:h-6 text-[#0047FF]"
+                  className="w-5 h-5 sm:w-6 sm:h-6 text-[#4C8DEB]"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -51,28 +51,28 @@ const Experience = () => {
               {experience.map((exp, index) => (
                 <div
                   key={index}
-                  className="group relative bg-[#0A0A0A] rounded-2xl p-5 sm:p-6 border border-[#1A1A1A] hover:border-[#0047FF]/30 transition-all duration-500"
+                  className="group relative bg-[#11141B] rounded-2xl p-5 sm:p-6 border border-[#242A36] hover:border-[#4C8DEB]/30 transition-all duration-500"
                   data-aos="fade-up"
-                  data-aos-delay={index * 100}
+                  data-aos-delay={80 + index * 80}
                 >
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[#0047FF]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[#4C8DEB]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
                   <div className="relative z-10">
                     <div className="flex flex-wrap items-start justify-between gap-2 mb-3">
                       <div className="flex-1">
-                        <h4 className="text-base sm:text-lg font-semibold text-white group-hover:text-[#00F0FF] transition-colors duration-300">
+                        <h4 className="text-base sm:text-lg font-semibold text-white group-hover:text-[#5EB5C4] transition-colors duration-300">
                           {exp.position}
                         </h4>
-                        <p className="text-[#00F0FF] text-sm font-medium mt-0.5">
+                        <p className="text-[#5EB5C4] text-sm font-medium mt-0.5">
                           {exp.company}
                         </p>
                       </div>
-                      <span className="px-3 py-1 bg-[#0F0F0F] text-[#A1A1A1] text-xs rounded-full border border-[#1A1A1A] whitespace-nowrap">
+                      <span className="px-3 py-1 bg-[#171B24] text-[#9AA3B2] text-xs rounded-full border border-[#242A36] whitespace-nowrap">
                         {exp.duration}
                       </span>
                     </div>
 
-                    <div className="flex items-center gap-2 text-xs text-[#6B6B6B] mb-3">
+                    <div className="flex items-center gap-2 text-xs text-[#6E7787] mb-3">
                       <svg
                         className="w-3.5 h-3.5 flex-shrink-0"
                         fill="none"
@@ -95,7 +95,7 @@ const Experience = () => {
                       <span>{exp.location}</span>
                     </div>
 
-                    <p className="text-[#A1A1A1] text-sm mb-4 leading-relaxed">
+                    <p className="text-[#9AA3B2] text-sm mb-4 leading-relaxed">
                       {exp.description}
                     </p>
 
@@ -103,9 +103,9 @@ const Experience = () => {
                       {exp.achievements.map((achievement, idx) => (
                         <li
                           key={idx}
-                          className="flex items-start gap-2 text-sm text-[#A1A1A1]"
+                          className="flex items-start gap-2 text-sm text-[#9AA3B2]"
                         >
-                          <span className="text-[#00F0FF] text-lg leading-none flex-shrink-0">
+                          <span className="text-[#5EB5C4] text-lg leading-none flex-shrink-0">
                             •
                           </span>
                           <span>{achievement}</span>
@@ -119,11 +119,15 @@ const Experience = () => {
           </div>
 
           {/* Education Column */}
-          <div data-aos="fade-up" data-aos-delay="100">
-            <div className="flex items-center gap-3 mb-6 sm:mb-8">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-[#00F0FF]/10 flex items-center justify-center flex-shrink-0">
+          <div>
+            <div
+              className="flex items-center gap-3 mb-6 sm:mb-8"
+              data-aos="fade-up"
+              data-aos-delay="40"
+            >
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-[#5EB5C4]/10 flex items-center justify-center flex-shrink-0">
                 <svg
-                  className="w-5 h-5 sm:w-6 sm:h-6 text-[#00F0FF]"
+                  className="w-5 h-5 sm:w-6 sm:h-6 text-[#5EB5C4]"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -147,29 +151,29 @@ const Experience = () => {
               {education.map((edu, index) => (
                 <div
                   key={index}
-                  className="group relative bg-[#0A0A0A] rounded-2xl p-5 sm:p-6 border border-[#1A1A1A] hover:border-[#00F0FF]/30 transition-all duration-500"
+                  className="group relative bg-[#11141B] rounded-2xl p-5 sm:p-6 border border-[#242A36] hover:border-[#5EB5C4]/30 transition-all duration-500"
                   data-aos="fade-up"
-                  data-aos-delay={index * 100 + 200}
+                  data-aos-delay={120 + index * 80}
                 >
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[#00F0FF]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[#5EB5C4]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
                   <div className="relative z-10">
                     <div className="flex flex-wrap items-start justify-between gap-2 mb-3">
                       <div className="flex-1">
-                        <h4 className="text-base sm:text-lg font-semibold text-white group-hover:text-[#00F0FF] transition-colors duration-300">
+                        <h4 className="text-base sm:text-lg font-semibold text-white group-hover:text-[#5EB5C4] transition-colors duration-300">
                           {edu.degree}
                         </h4>
-                        <p className="text-[#0047FF] text-sm font-medium mt-0.5">
+                        <p className="text-[#4C8DEB] text-sm font-medium mt-0.5">
                           {edu.institution}
                         </p>
                       </div>
-                      <span className="px-3 py-1 bg-[#0F0F0F] text-[#A1A1A1] text-xs rounded-full border border-[#1A1A1A] whitespace-nowrap">
+                      <span className="px-3 py-1 bg-[#171B24] text-[#9AA3B2] text-xs rounded-full border border-[#242A36] whitespace-nowrap">
                         {edu.duration}
                       </span>
                     </div>
 
                     <div className="flex flex-wrap items-center gap-3 text-xs mb-3">
-                      <div className="flex items-center gap-1.5 text-[#6B6B6B]">
+                      <div className="flex items-center gap-1.5 text-[#6E7787]">
                         <svg
                           className="w-3.5 h-3.5"
                           fill="none"
@@ -193,16 +197,16 @@ const Experience = () => {
                       </div>
                       {edu.grade && (
                         <>
-                          <span className="text-[#6B6B6B]">•</span>
+                          <span className="text-[#6E7787]">•</span>
                           <div className="flex items-center gap-1.5">
                             <svg
-                              className="w-3.5 h-3.5 text-[#A3FF00]"
+                              className="w-3.5 h-3.5 text-[#7DB88A]"
                               fill="currentColor"
                               viewBox="0 0 24 24"
                             >
                               <path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
                             </svg>
-                            <span className="text-[#A3FF00]">{edu.grade}</span>
+                            <span className="text-[#7DB88A]">{edu.grade}</span>
                           </div>
                         </>
                       )}
@@ -210,14 +214,14 @@ const Experience = () => {
 
                     {edu.courses && (
                       <div className="mt-4">
-                        <p className="text-xs font-medium text-[#6B6B6B] mb-2">
+                        <p className="text-xs font-medium text-[#6E7787] mb-2">
                           Relevant Courses:
                         </p>
                         <div className="flex flex-wrap gap-1.5">
                           {edu.courses.map((course, idx) => (
                             <span
                               key={idx}
-                              className="px-2.5 py-1 bg-[#0F0F0F] text-[#A1A1A1] text-xs rounded-full border border-[#1A1A1A] hover:border-[#A3FF00]/30 hover:text-[#A3FF00] transition-all duration-300"
+                              className="px-2.5 py-1 bg-[#171B24] text-[#9AA3B2] text-xs rounded-full border border-[#242A36] hover:border-[#7DB88A]/30 hover:text-[#7DB88A] transition-all duration-300"
                             >
                               {course}
                             </span>
