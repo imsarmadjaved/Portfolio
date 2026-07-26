@@ -72,36 +72,28 @@ const Footer = () => {
     return icons[iconName] || null;
   };
 
-  // Social links with colors
   const socialLinks = [
     {
       href: personal.socialLinks?.github,
-      color: "#7DB88A",
       icon: "github",
       name: "GitHub",
     },
     {
       href: personal.socialLinks?.linkedin,
-      color: "#5EB5C4",
       icon: "linkedin",
       name: "LinkedIn",
     },
     {
       href: `mailto:${personal.email}`,
-      color: "#4C8DEB",
       icon: "email",
       name: "Email",
     },
   ].filter((link) => link.href);
 
   return (
-    <footer
-      className="relative border-t border-[#242A36]"
-      style={{ backgroundColor: "#0A0C10" }}
-    >
-      {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-64 h-64 bg-[#4C8DEB]/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#5EB5C4]/5 rounded-full blur-3xl"></div>
+    <footer className="relative border-t border-[var(--black-border)] bg-[var(--black-deep)]">
+      <div className="section-orb section-orb--right" aria-hidden="true" />
+      <div className="section-orb section-orb--left" aria-hidden="true" />
 
       <div className="container-custom relative z-10 px-4 sm:px-6 lg:px-8 mx-auto">
         {/* Main Footer Content */}
@@ -117,7 +109,7 @@ const Footer = () => {
               >
                 <LogoMark className="logo-mark--footer" />
               </a>
-              <p className="text-xs sm:text-sm text-[#9AA3B2] leading-relaxed mb-6 max-w-sm">
+              <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed mb-6 max-w-sm">
                 {footer.brandDescription}
               </p>
               <div className="flex flex-wrap gap-3">
@@ -127,11 +119,7 @@ const Footer = () => {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-lg bg-[#11141B] border border-[#242A36] flex items-center justify-center text-[#6E7787] hover:scale-110 transition-all duration-300"
-                    style={{
-                      color: link.color,
-                      borderColor: `${link.color}30`,
-                    }}
+                    className="w-10 h-10 rounded-lg bg-[var(--black-surface)] border border-[var(--black-border)] flex items-center justify-center text-[var(--text-tertiary)] hover:text-[var(--accent-primary)] hover:border-[rgba(var(--accent-rgb),0.4)] transition-all duration-300"
                     aria-label={link.name || link.icon}
                   >
                     {getIcon(link.icon)}
@@ -142,8 +130,8 @@ const Footer = () => {
 
             {/* Quick Links */}
             <div className="sm:col-span-1 lg:col-span-2 lg:col-start-7">
-              <h3 className="text-xs sm:text-sm font-semibold text-white uppercase tracking-wider mb-4 flex items-center gap-2">
-                <span className="w-1 h-4 bg-[#5EB5C4] rounded-full"></span>
+              <h3 className="text-xs sm:text-sm font-semibold text-[var(--text-primary)] uppercase tracking-wider mb-4 flex items-center gap-2">
+                <span className="w-1 h-4 accent-bar rounded-full"></span>
                 Quick Links
               </h3>
               <ul className="space-y-3">
@@ -152,7 +140,7 @@ const Footer = () => {
                     <a
                       href={`#${link.href}`}
                       onClick={(e) => handleLinkClick(link, e)}
-                      className="text-xs sm:text-sm text-[#9AA3B2] hover:text-[#5EB5C4] transition-colors duration-300 inline-block"
+                      className="text-xs sm:text-sm text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors duration-300 inline-block"
                     >
                       {link.name}
                     </a>
@@ -163,8 +151,8 @@ const Footer = () => {
 
             {/* Connect */}
             <div className="sm:col-span-1 lg:col-span-2">
-              <h3 className="text-xs sm:text-sm font-semibold text-white uppercase tracking-wider mb-4 flex items-center gap-2">
-                <span className="w-1 h-4 bg-[#4C8DEB] rounded-full"></span>
+              <h3 className="text-xs sm:text-sm font-semibold text-[var(--text-primary)] uppercase tracking-wider mb-4 flex items-center gap-2">
+                <span className="w-1 h-4 accent-bar rounded-full"></span>
                 Connect
               </h3>
               <ul className="space-y-3">
@@ -174,7 +162,7 @@ const Footer = () => {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-xs sm:text-sm text-[#9AA3B2] hover:text-[#4C8DEB] transition-colors duration-300 inline-flex items-center gap-2"
+                      className="text-xs sm:text-sm text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors duration-300 inline-flex items-center gap-2"
                     >
                       <span className="w-4 h-4 flex-shrink-0">
                         {getIcon(link.icon)}
@@ -189,8 +177,8 @@ const Footer = () => {
           </div>
 
           {/* Bottom Bar */}
-          <div className="mt-8 sm:mt-10 md:mt-12 pt-6 sm:pt-8 border-t border-[#242A36] flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4">
-            <p className="text-xs sm:text-sm text-[#6E7787] text-center sm:text-left">
+          <div className="mt-8 sm:mt-10 md:mt-12 pt-6 sm:pt-8 border-t border-[var(--black-border)] flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4">
+            <p className="text-xs sm:text-sm text-[var(--text-tertiary)] text-center sm:text-left">
               © {currentYear} {personal.name}. All rights reserved.
             </p>
           </div>

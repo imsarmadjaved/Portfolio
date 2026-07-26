@@ -2,6 +2,12 @@ import { useMemo, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { portfolioData } from "../data/PortfolioData";
 import useReducedMotion from "../hooks/useReducedMotion";
+import {
+  getVariants,
+  staggerContainer,
+  staggerItem,
+  viewportOnce,
+} from "../motion/variants";
 import SectionHeading from "./ui/SectionHeading";
 
 const categories = [
@@ -59,6 +65,8 @@ const SkillProgress = ({ name, level, reducedMotion, delay = 0 }) => {
 const Skills = () => {
   const { skills } = portfolioData;
   const reducedMotion = useReducedMotion();
+  const container = getVariants(staggerContainer(0.07, 0.04), reducedMotion);
+  const item = getVariants(staggerItem, reducedMotion);
   const [activeCategory, setActiveCategory] = useState("frontend");
   const tabsRef = useRef([]);
   const currentSkills = useMemo(
@@ -89,12 +97,14 @@ const Skills = () => {
           description="A practical toolkit for building complete, reliable web products."
         />
 
-        <div
+        <motion.div
           className="filter-tabs"
           role="tablist"
           aria-label="Skill categories"
-          data-aos="fade-up"
-          data-aos-delay="80"
+          variants={item}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
         >
           {categories.map((category, index) => {
             const isActive = activeCategory === category.id;
@@ -118,22 +128,25 @@ const Skills = () => {
               </button>
             );
           })}
-        </div>
+        </motion.div>
 
-        <div
+        <motion.div
           id="skills-panel"
           className="skills-grid"
           role="tabpanel"
           aria-labelledby={`skills-tab-${activeCategory}`}
           key={activeCategory}
+          variants={container}
+          initial="hidden"
+          animate="visible"
         >
           {currentSkills.map((skill, index) => {
             const level = Math.max(0, Math.min(100, skill.level ?? 70));
             return (
-              <article
+              <motion.article
                 key={skill.name}
                 className="skill-card"
-                style={{ "--item-index": index }}
+                variants={item}
               >
                 <span className="skill-card__index">
                   {String(index + 1).padStart(2, "0")}
@@ -141,6 +154,7 @@ const Skills = () => {
                 <div className="skill-card__main">
                   <h3>{skill.name}</h3>
                   <SkillProgress
+                    key={`${activeCategory}-${skill.name}`}
                     name={skill.name}
                     level={level}
                     reducedMotion={reducedMotion}
@@ -148,10 +162,10 @@ const Skills = () => {
                   />
                 </div>
                 <span className="skill-card__status">{level}%</span>
-              </article>
+              </motion.article>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

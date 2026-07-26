@@ -1,5 +1,13 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { portfolioData } from "../data/PortfolioData";
+import useReducedMotion from "../hooks/useReducedMotion";
+import {
+  getVariants,
+  staggerContainer,
+  staggerItem,
+  viewportOnce,
+} from "../motion/variants";
 import SectionHeading from "./ui/SectionHeading";
 
 const filters = [
@@ -12,6 +20,9 @@ const filters = [
 
 const Projects = () => {
   const { projects, personal } = portfolioData;
+  const reducedMotion = useReducedMotion();
+  const container = getVariants(staggerContainer(0.075, 0.04), reducedMotion);
+  const item = getVariants(staggerItem, reducedMotion);
   const [filter, setFilter] = useState("all");
   const [imageErrors, setImageErrors] = useState({});
   const filteredProjects = projects.filter((project) => {
@@ -30,34 +41,43 @@ const Projects = () => {
           description="Products that combine practical engineering, thoughtful interfaces, and real-world problem solving."
         />
 
-        <div
+        <motion.div
           className="filter-tabs"
           role="group"
           aria-label="Filter projects"
-          data-aos="fade-up"
-          data-aos-delay="80"
+          variants={item}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
         >
-          {filters.map((item) => (
+          {filters.map((itemFilter) => (
             <button
-              key={item.id}
+              key={itemFilter.id}
               type="button"
-              className={filter === item.id ? "is-active" : ""}
-              aria-pressed={filter === item.id}
-              onClick={() => setFilter(item.id)}
+              className={filter === itemFilter.id ? "is-active" : ""}
+              aria-pressed={filter === itemFilter.id}
+              onClick={() => setFilter(itemFilter.id)}
             >
-              {item.label}
+              {itemFilter.label}
             </button>
           ))}
-        </div>
+        </motion.div>
 
-        <div className="projects-grid" key={filter} aria-live="polite">
-          {filteredProjects.map((project, index) => {
+        <motion.div
+          className="projects-grid"
+          key={filter}
+          aria-live="polite"
+          variants={container}
+          initial="hidden"
+          animate="visible"
+        >
+          {filteredProjects.map((project) => {
             const hasImage = project.image && !imageErrors[project.id];
             return (
-              <article
+              <motion.article
                 key={project.id}
                 className="project-card"
-                style={{ "--item-index": index }}
+                variants={item}
               >
                 <a
                   href={project.liveUrl}
@@ -121,10 +141,10 @@ const Projects = () => {
                     </a>
                   </div>
                 </div>
-              </article>
+              </motion.article>
             );
           })}
-        </div>
+        </motion.div>
 
         {filteredProjects.length === 0 && (
           <div className="empty-state">
@@ -135,7 +155,13 @@ const Projects = () => {
           </div>
         )}
 
-        <div className="section-cta" data-aos="fade-up" data-aos-delay="100">
+        <motion.div
+          className="section-cta"
+          variants={item}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+        >
           <a
             href={personal.socialLinks.github}
             target="_blank"
@@ -143,7 +169,7 @@ const Projects = () => {
           >
             Explore all repositories <span aria-hidden="true">↗</span>
           </a>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

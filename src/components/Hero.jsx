@@ -6,6 +6,7 @@ import {
   staggerContainer,
   staggerItem,
 } from "../motion/variants";
+import HeroAtmosphere from "./backgrounds/HeroAtmosphere";
 
 const Hero = () => {
   const { personal, footer } = portfolioData;
@@ -15,6 +16,7 @@ const Hero = () => {
 
   return (
     <section id="home" className="hero-section">
+      <HeroAtmosphere />
       <motion.div
         className="container-custom hero-content"
         variants={heroContainer}

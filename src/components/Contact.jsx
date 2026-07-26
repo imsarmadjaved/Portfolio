@@ -1,10 +1,21 @@
 // src/components/Contact.jsx
 import React, { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 import { portfolioData } from "../data/PortfolioData";
+import useReducedMotion from "../hooks/useReducedMotion";
+import {
+  getVariants,
+  staggerContainer,
+  staggerItem,
+  viewportOnce,
+} from "../motion/variants";
 import SectionHeading from "./ui/SectionHeading";
 
 const Contact = () => {
   const { personal } = portfolioData;
+  const reducedMotion = useReducedMotion();
+  const container = getVariants(staggerContainer(0.08, 0.04), reducedMotion);
+  const item = getVariants(staggerItem, reducedMotion);
   const [formData, setFormData] = useState({
     user_name: "",
     user_email: "",
@@ -94,7 +105,6 @@ const Contact = () => {
       label: "Email",
       value: personal.email,
       href: `mailto:${personal.email}`,
-      color: "#5EB5C4",
     },
     {
       icon: (
@@ -115,7 +125,6 @@ const Contact = () => {
       label: "Phone",
       value: personal.phone,
       href: `tel:${personal.phone}`,
-      color: "#4C8DEB",
     },
     {
       icon: (
@@ -142,15 +151,13 @@ const Contact = () => {
       label: "Location",
       value: personal.location,
       href: null,
-      color: "#7DB88A",
     },
   ];
 
   return (
     <section id="contact" className="portfolio-section contact-section">
-      {/* Background decorative elements */}
-      <div className="absolute top-10 right-10 w-72 h-72 bg-[#5EB5C4]/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-10 left-10 w-80 h-80 bg-[#4C8DEB]/5 rounded-full blur-3xl"></div>
+      <div className="section-orb section-orb--right" aria-hidden="true" />
+      <div className="section-orb section-orb--left" aria-hidden="true" />
 
       <div className="container-custom relative z-10">
         <SectionHeading
@@ -161,58 +168,56 @@ const Contact = () => {
 
         <div className="grid lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
           {/* Left Column - Contact Info */}
-          <div className="lg:col-span-1 space-y-4 sm:space-y-5">
+          <motion.div
+            className="lg:col-span-1 space-y-4 sm:space-y-5"
+            variants={container}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+          >
             {contactInfo.map((info, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="group relative bg-[#11141B] rounded-2xl p-5 sm:p-6 border border-[#242A36] hover:border-[#2E3544] transition-all duration-500 hover:-translate-y-1"
-                data-aos="fade-up"
-                data-aos-delay={index * 80}
+                className="group relative surface-panel rounded-2xl p-5 sm:p-6 border-hover-accent transition-all duration-500 hover:-translate-y-1"
+                variants={item}
               >
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[#4C8DEB]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 rounded-2xl bg-[rgba(var(--accent-rgb),0.04)] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                 <div className="relative z-10 flex items-start gap-4">
-                  <div
-                    className="w-11 h-11 rounded-lg flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110"
-                    style={{
-                      backgroundColor: `${info.color}10`,
-                      color: info.color,
-                    }}
-                  >
+                  <div className="w-11 h-11 rounded-lg accent-soft flex items-center justify-center flex-shrink-0 transition-all duration-300">
                     {info.icon}
                   </div>
                   <div className="min-w-0 flex-1">
-                    <p className="text-xs text-[#6E7787] mb-1">{info.label}</p>
+                    <p className="text-xs text-[var(--text-tertiary)] mb-1">{info.label}</p>
                     {info.href ? (
                       <a
                         href={info.href}
-                        className="text-sm sm:text-base text-white font-medium hover:text-[#5EB5C4] transition-colors duration-300 break-words block"
+                        className="text-sm sm:text-base text-[var(--text-primary)] font-medium hover:text-[var(--accent-primary)] transition-colors duration-300 break-words block"
                       >
                         {info.value}
                       </a>
                     ) : (
-                      <p className="text-sm sm:text-base text-white font-medium break-words">
+                      <p className="text-sm sm:text-base text-[var(--text-primary)] font-medium break-words">
                         {info.value}
                       </p>
                     )}
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
 
             {/* Social Links */}
-            <div
-              className="bg-[#11141B] rounded-2xl p-5 sm:p-6 border border-[#242A36]"
-              data-aos="fade-up"
-              data-aos-delay="240"
+            <motion.div
+              className="surface-panel rounded-2xl p-5 sm:p-6"
+              variants={item}
             >
-              <p className="text-xs text-[#6E7787] mb-4">Connect with me</p>
+              <p className="text-xs text-[var(--text-tertiary)] mb-4">Connect with me</p>
               <div className="flex gap-3">
                 <a
                   href={personal.socialLinks.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-11 h-11 rounded-lg bg-[#171B24] border border-[#242A36] flex items-center justify-center text-[#6E7787] hover:text-[#7DB88A] hover:border-[#7DB88A]/40 transition-all duration-300 hover:scale-110"
+                  className="w-11 h-11 rounded-lg surface-elevated border border-[var(--black-border)] flex items-center justify-center text-[var(--text-tertiary)] hover:text-[var(--accent-primary)] hover:border-[rgba(var(--accent-rgb),0.4)] transition-all duration-300"
                   aria-label="GitHub"
                 >
                   <svg
@@ -231,7 +236,7 @@ const Contact = () => {
                   href={personal.socialLinks.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-11 h-11 rounded-lg bg-[#171B24] border border-[#242A36] flex items-center justify-center text-[#6E7787] hover:text-[#5EB5C4] hover:border-[#5EB5C4]/40 transition-all duration-300 hover:scale-110"
+                  className="w-11 h-11 rounded-lg surface-elevated border border-[var(--black-border)] flex items-center justify-center text-[var(--text-tertiary)] hover:text-[var(--accent-primary)] hover:border-[rgba(var(--accent-rgb),0.4)] transition-all duration-300"
                   aria-label="LinkedIn"
                 >
                   <svg
@@ -244,7 +249,7 @@ const Contact = () => {
                 </a>
                 <a
                   href={`mailto:${personal.email}`}
-                  className="w-11 h-11 rounded-lg bg-[#171B24] border border-[#242A36] flex items-center justify-center text-[#6E7787] hover:text-[#4C8DEB] hover:border-[#4C8DEB]/40 transition-all duration-300 hover:scale-110"
+                  className="w-11 h-11 rounded-lg surface-elevated border border-[var(--black-border)] flex items-center justify-center text-[var(--text-tertiary)] hover:text-[var(--accent-primary)] hover:border-[rgba(var(--accent-rgb),0.4)] transition-all duration-300"
                   aria-label="Email"
                 >
                   <svg
@@ -262,22 +267,24 @@ const Contact = () => {
                   </svg>
                 </a>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Right Column - Contact Form */}
-          <div
+          <motion.div
             className="lg:col-span-2"
-            data-aos="fade-up"
-            data-aos-delay="120"
+            variants={item}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
           >
             <form
               onSubmit={handleSubmit}
-              className="bg-[#11141B] rounded-2xl p-6 sm:p-8 border border-[#242A36]"
+              className="surface-panel rounded-2xl p-6 sm:p-8"
               aria-busy={isSubmitting}
             >
-              <h3 className="text-xl font-semibold text-white mb-6 flex items-center gap-2">
-                <span className="w-1 h-5 bg-[#5EB5C4] rounded-full"></span>
+              <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-6 flex items-center gap-2">
+                <span className="w-1 h-5 accent-bar rounded-full"></span>
                 Send me a message
               </h3>
 
@@ -285,7 +292,7 @@ const Contact = () => {
                 <div>
                   <label
                     htmlFor="user_name"
-                    className="block text-sm font-medium text-[#A1A1A1] mb-2"
+                    className="block text-sm font-medium text-[var(--text-secondary)] mb-2"
                   >
                     Your Name
                   </label>
@@ -296,7 +303,7 @@ const Contact = () => {
                     value={formData.user_name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-[#171B24] border border-[#242A36] rounded-xl text-sm text-white placeholder-[#6E7787] focus:outline-none focus:border-[#5EB5C4] transition-all duration-300"
+                    className="w-full px-4 py-3 surface-elevated border border-[var(--black-border)] rounded-xl text-sm text-[var(--text-primary)] placeholder-[var(--color-placeholder)] focus:outline-none focus:border-[var(--accent-primary)] transition-all duration-300"
                     placeholder="John Doe"
                   />
                 </div>
@@ -304,7 +311,7 @@ const Contact = () => {
                 <div>
                   <label
                     htmlFor="user_email"
-                    className="block text-sm font-medium text-[#A1A1A1] mb-2"
+                    className="block text-sm font-medium text-[var(--text-secondary)] mb-2"
                   >
                     Email Address
                   </label>
@@ -315,7 +322,7 @@ const Contact = () => {
                     value={formData.user_email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-[#171B24] border border-[#242A36] rounded-xl text-sm text-white placeholder-[#737373] focus:border-[#5EB5C4] transition-all duration-300"
+                    className="w-full px-4 py-3 surface-elevated border border-[var(--black-border)] rounded-xl text-sm text-[var(--text-primary)] placeholder-[var(--color-placeholder)] focus:outline-none focus:border-[var(--accent-primary)] transition-all duration-300"
                     placeholder="john@example.com"
                   />
                 </div>
@@ -323,7 +330,7 @@ const Contact = () => {
                 <div>
                   <label
                     htmlFor="message"
-                    className="block text-sm font-medium text-[#A1A1A1] mb-2"
+                    className="block text-sm font-medium text-[var(--text-secondary)] mb-2"
                   >
                     Your Message
                   </label>
@@ -336,10 +343,10 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-[#171B24] border border-[#242A36] rounded-xl text-sm text-white placeholder-[#737373] focus:border-[#5EB5C4] transition-all duration-300 resize-none"
+                    className="w-full px-4 py-3 surface-elevated border border-[var(--black-border)] rounded-xl text-sm text-[var(--text-primary)] placeholder-[var(--color-placeholder)] focus:outline-none focus:border-[var(--accent-primary)] transition-all duration-300 resize-none"
                     placeholder="Tell me about your project or opportunity..."
                   ></textarea>
-                  <p className="mt-2 text-right text-xs text-[#858585]">
+                  <p className="mt-2 text-right text-xs text-[var(--text-muted)]">
                     {formData.message.length} / 2000
                   </p>
                 </div>
@@ -348,10 +355,10 @@ const Contact = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className={`w-full px-6 py-3.5 bg-gradient-to-r from-[#4C8DEB] to-[#4A9EAD] text-white text-sm font-medium rounded-xl transition-all duration-300 ${
+                    className={`w-full px-6 py-3.5 bg-[var(--accent-primary)] text-[var(--text-primary)] text-sm font-medium rounded-xl transition-all duration-300 ${
                       isSubmitting
                         ? "opacity-70 cursor-not-allowed"
-                        : "hover:shadow-lg hover:shadow-[#4C8DEB]/25 hover:-translate-y-0.5"
+                        : "hover:bg-[var(--accent-hover)] hover:-translate-y-0.5"
                     }`}
                   >
                     {isSubmitting ? (
@@ -401,11 +408,11 @@ const Contact = () => {
                 {/* Status Messages */}
                 {submitStatus === "success" && (
                   <div
-                    className="mt-4 p-4 bg-[#7DB88A]/10 border border-[#7DB88A]/30 rounded-xl"
+                    className="mt-4 p-4 status-success border rounded-xl"
                     role="status"
                     aria-live="polite"
                   >
-                    <p className="text-[#7DB88A] text-sm text-center flex items-center justify-center gap-2">
+                    <p className="text-sm text-center flex items-center justify-center gap-2">
                       <svg
                         className="w-4 h-4"
                         fill="none"
@@ -426,10 +433,10 @@ const Contact = () => {
 
                 {submitStatus === "error" && (
                   <div
-                    className="mt-4 p-4 bg-[#E05A78]/10 border border-[#E05A78]/30 rounded-xl"
+                    className="mt-4 p-4 status-error border rounded-xl"
                     role="alert"
                   >
-                    <p className="text-[#E05A78] text-sm text-center flex items-center justify-center gap-2">
+                    <p className="text-sm text-center flex items-center justify-center gap-2">
                       <svg
                         className="w-4 h-4"
                         fill="none"
@@ -453,7 +460,7 @@ const Contact = () => {
                 )}
               </div>
             </form>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
