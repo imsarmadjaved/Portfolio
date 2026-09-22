@@ -97,7 +97,7 @@ export const portfolioData = {
             technologies: ['Next.js', 'Node.js', 'PostgreSQL', 'Supabase', 'Vercel'],
             image: '/projects/healingvrse.jpg',
             liveUrl: "https://healingvrse.vercel.app/",
-            githubUrl: "https://github.com/imsarmadjaved/nextrade-frontend",
+            githubUrl: "",
         },
         {
             id: 2,
