@@ -92,6 +92,15 @@ export const portfolioData = {
     projects: [
         {
             id: 1,
+            title: 'Healingvrse',
+            description: 'Wellbeing and social support platform where users share daily practices, connect through support circles, and track their personal journey.',
+            technologies: ['Next.js', 'Node.js', 'PostgreSQL', 'Supabase', 'Vercel'],
+            image: '/projects/healingvrse.jpg',
+            liveUrl: "https://healingvrse.vercel.app/",
+            githubUrl: "https://github.com/imsarmadjaved/nextrade-frontend",
+        },
+        {
+            id: 2,
             title: "NexTrade",
             description: "An AI-enhanced B2B marketplace connecting wholesalers and retailers, with scalable REST APIs, optimized media delivery, and intelligent product recommendations.",
             image: "/images/projects/nextrade.png",
@@ -101,7 +110,7 @@ export const portfolioData = {
             featured: true
         },
         {
-            id: 2,
+            id: 3,
             title: "AI Recipe Generator",
             description: "An AI-based recipe generator that turns available ingredients into recipe ideas through a focused, responsive web experience.",
             image: "/images/projects/ai-recipe.png",
@@ -111,7 +120,7 @@ export const portfolioData = {
             featured: false
         },
         {
-            id: 3,
+            id: 4,
             title: "First E-commerce Page",
             description: "An early responsive e-commerce interface built to strengthen practical React and Tailwind CSS skills.",
             image: null,
@@ -121,7 +130,7 @@ export const portfolioData = {
             featured: false
         },
         {
-            id: 4,
+            id: 5,
             title: "React Portfolio",
             description: "A portfolio interface built with React and Tailwind CSS, featuring dark and light presentation modes.",
             image: null,
@@ -131,7 +140,7 @@ export const portfolioData = {
             featured: false
         },
         {
-            id: 5,
+            id: 6,
             title: "Job Portal",
             description: "A MERN stack job portal with role-based access for managing opportunities and applications.",
             image: null,
@@ -141,7 +150,7 @@ export const portfolioData = {
             featured: true
         },
         {
-            id: 6,
+            id: 7,
             title: "RAG Resume System",
             description: "An AI-powered recruitment platform for resume analysis, semantic search, skill matching, and structured candidate comparison.",
             image: null,
@@ -153,6 +162,17 @@ export const portfolioData = {
     ],
 
     experience: [
+        {
+            company: "Self-employed",
+            position: 'Freelance Full Stack Developer',
+            duration: '05/2026 - Present',
+            location: "Lahore, Punjab, Pakistan",
+            achievements: [
+                'Built full-stack apps with Next.js, Node.js, PostgreSQL & Supabase',
+                'Implemented REST APIs, authentication & role-based access control',
+                'Integrated Google Auth & scheduled background workflows',
+            ],
+        },
         {
             company: "Amrood Labs",
             position: "MERN Stack Developer Intern",
